@@ -6,6 +6,20 @@ import { z } from "zod"
 
 import { Button } from "@/components/ui/button";
 import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import {
   Form,
   FormControl,
   FormDescription,
@@ -16,9 +30,10 @@ import {
 } from "@/components/ui/form";
 import { Tabs, TabsTrigger, TabsContent, TabsList } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "@/components/ui/use-toast";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faImage, faBell, faStar, faHeart  } from '@fortawesome/free-regular-svg-icons';
+import { faUser, faImage, faBell, faStar, faHeart, faArrowAltCircleDown  } from '@fortawesome/free-regular-svg-icons';
 
 
 const FormSchema = z.object({
@@ -63,7 +78,80 @@ export default function Home() {
         </a>
       </div>
       <hr className="my-4 w-full" />
-      <div className="flex flex-row justify-between gap-8">
+      <div className="grid grid-cols-1 gap-10 w-full">
+
+        {/* Table */}
+        <div>
+          <h3 className="text-2xl">Table</h3>
+          <Table>
+            <TableCaption>A list of your recent invoices.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead>ID</TableHead>
+                <TableHead>Cliente</TableHead>
+                <TableHead>Propiedad</TableHead>
+                <TableHead>Cant. Lote</TableHead>
+                <TableHead>Distribuidor</TableHead>
+                <TableHead>Cultivo</TableHead>
+                <TableHead>Estado</TableHead>
+                <TableHead>Creado por</TableHead>
+                <TableHead className="w-[60px]">Sembrado</TableHead>
+                <TableHead></TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {
+              [{id: 1}, {id: 2}, {id: 3}].map((link) => (
+                <Collapsible key={link.id} asChild>
+                  <>
+                    <TableRow>
+                      <TableCell>#123459</TableCell>
+                      <TableCell>Fortalezza SA</TableCell>
+                      <TableCell>Billinghurst</TableCell>
+                      <TableCell>16</TableCell>
+                      <TableCell>Distrubuidora Lopez</TableCell>
+                      <TableCell>Girasol sticio</TableCell>
+                      <TableCell><Badge variant="default">Procesando</Badge></TableCell>
+                      <TableCell>Luis Lopez</TableCell>
+                      <TableCell className="text-center">
+                        <FontAwesomeIcon icon={faHeart} size="md" className="text-accent mr-2" />
+                      </TableCell>
+                      <TableCell className="text-center">
+                        <CollapsibleTrigger asChild>
+                          <FontAwesomeIcon icon={faArrowAltCircleDown} size="md" className="text-primary-foreground mr-2" />
+                        </CollapsibleTrigger>
+                      </TableCell>
+                    </TableRow>
+                    <CollapsibleContent className="w-full table-row">
+                      <Table>
+                        <TableCaption>A list of your recent invoices.</TableCaption>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead className="w-[100px]">Invoice</TableHead>
+                            <TableHead>Status</TableHead>
+                            <TableHead>Method</TableHead>
+                            <TableHead className="text-right">Amount</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          <TableRow>
+                            <TableCell className="font-medium">INV001</TableCell>
+                            <TableCell>Paid</TableCell>
+                            <TableCell>Credit Card</TableCell>
+                            <TableCell className="text-right">$250.00</TableCell>
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+                    </CollapsibleContent>
+                  </>
+                </Collapsible>
+                ))
+              }
+            </TableBody>
+          </Table>
+        </div>
+
+        {/* Color Palette */}
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl">Neutral Colors</h3>
           <div className="flex flex-col flex-wrap gap-4">
@@ -107,7 +195,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Buttons */}
 
         {/* Input Forms */}
         <div>
@@ -124,7 +211,7 @@ export default function Home() {
                       <Input placeholder="shadcn" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your public display name.
+                      Probá las validaciones haciendo submit
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -134,7 +221,6 @@ export default function Home() {
             </form>
           </Form>
         </div>
-        {/* Input Forms */}
 
         {/* Tabs */}
         <div>
@@ -159,6 +245,17 @@ export default function Home() {
           <FontAwesomeIcon icon={faStar} size="2x" className="text-primary-foreground mr-2" />
           <FontAwesomeIcon icon={faHeart} size="2x" className="text-accent mr-2" />
           <FontAwesomeIcon icon={faBell} size="2x" className="text-destructive mr-2" />
+
+          <hr className="my-4" />
+
+          {/* Icons */}
+          <div className="flex flex-col items-start gap-4">
+            <h3 className="text-2xl">Badges</h3>
+            <Badge variant="default">Procesando</Badge>
+            <Badge variant="secondary">Resultados disponibles</Badge>
+            <Badge variant="outline">Descargado</Badge>
+            <Badge variant="destructive">Resultados disponibles</Badge>
+          </div>
         </div>
       </div>
     </div>
