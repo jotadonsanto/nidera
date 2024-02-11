@@ -1,9 +1,11 @@
 "use client"
 
+// Form libraries.
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+// Import UI components
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -32,15 +34,36 @@ import { Tabs, TabsTrigger, TabsContent, TabsList } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "@/components/ui/use-toast";
+
+// Import icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faImage, faBell, faStar, faHeart, faArrowAltCircleDown  } from '@fortawesome/free-regular-svg-icons';
+import { faCircleCheck, faChevronDown  } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faImage, faBell, faStar, faHeart  } from '@fortawesome/free-regular-svg-icons';
 
+import { tableData } from '@/app/mockFile';
 
+// Form validations
 const FormSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
 })
+
+const recomendacionStatus = (status: string) => {
+  switch (status) {
+    case 'processing':
+      return <Badge variant="default">Procesando</Badge>
+    case 'results_available':
+      return <Badge variant="secondary">Resultados disponibles</Badge>
+    case 'downloaded':
+      return <Badge variant="outline">Descargado</Badge>
+    case 'sent':
+      return <Badge variant="destructive">Resultados disponibles</Badge>
+    default:
+      return <div>-</div>;
+  }
+}
+
 
 export default function Home() {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -101,48 +124,76 @@ export default function Home() {
             </TableHeader>
             <TableBody>
               {
-              [{id: 1}, {id: 2}, {id: 3}].map((link) => (
-                <Collapsible key={link.id} asChild>
+              tableData.map((recomendacion) => (
+                <Collapsible key={recomendacion.id} asChild>
                   <>
-                    <TableRow>
-                      <TableCell>#123459</TableCell>
-                      <TableCell>Fortalezza SA</TableCell>
-                      <TableCell>Billinghurst</TableCell>
-                      <TableCell>16</TableCell>
-                      <TableCell>Distrubuidora Lopez</TableCell>
-                      <TableCell>Girasol sticio</TableCell>
-                      <TableCell><Badge variant="default">Procesando</Badge></TableCell>
-                      <TableCell>Luis Lopez</TableCell>
-                      <TableCell className="text-center">
-                        <FontAwesomeIcon icon={faHeart} size="md" className="text-accent mr-2" />
-                      </TableCell>
-                      <TableCell className="text-center">
-                        <CollapsibleTrigger asChild>
-                          <FontAwesomeIcon icon={faArrowAltCircleDown} size="md" className="text-primary-foreground mr-2" />
-                        </CollapsibleTrigger>
-                      </TableCell>
-                    </TableRow>
-                    <CollapsibleContent className="w-full table-row">
-                      <Table>
-                        <TableCaption>A list of your recent invoices.</TableCaption>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead className="w-[100px]">Invoice</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead>Method</TableHead>
-                            <TableHead className="text-right">Amount</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          <TableRow>
-                            <TableCell className="font-medium">INV001</TableCell>
-                            <TableCell>Paid</TableCell>
-                            <TableCell>Credit Card</TableCell>
-                            <TableCell className="text-right">$250.00</TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </Table>
+                    <CollapsibleTrigger asChild type={undefined} className="cursor-pointer">
+                      {/* Acá se itera cada fila de la tabla */}
+                      <TableRow>
+                          <TableCell>{recomendacion.id}</TableCell>
+                          <TableCell>{recomendacion.cliente}</TableCell>
+                          <TableCell>{recomendacion.propiedad}</TableCell>
+                          <TableCell>{recomendacion.cantidad}</TableCell>
+                          <TableCell>{recomendacion.distribuidor}</TableCell>
+                          <TableCell>{recomendacion.cultivo}</TableCell>
+                          <TableCell>
+                            { recomendacionStatus(recomendacion.estado) }
+                          </TableCell>
+                          <TableCell>{recomendacion.creado}</TableCell>
+                          <TableCell className="text-center">
+                            {recomendacion.sembrado &&
+                              <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
+                            }
+                          </TableCell>
+                          <TableCell className="text-center">
+                            <FontAwesomeIcon icon={faChevronDown} size="sm" className="text-gray-500 mr-2" />
+                          </TableCell>
+                      </TableRow>
+                    </CollapsibleTrigger>
+
+                    {/* Si tiene data que desplegar */}
+                    {recomendacion.lotes?.length &&
+                    <CollapsibleContent asChild className="CollapsibleContent">
+                      <TableRow>
+                        <TableCell colSpan={10}>
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>Lote</TableHead>
+                                <TableHead>Fecha de siembra</TableHead>
+                                <TableHead>Hibrido</TableHead>
+                                <TableHead colSpan={4}>Superficie</TableHead>
+                                <TableHead>Sembrado</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              <>{
+                              recomendacion.lotes.map((lote) => (
+                                <TableRow key={lote.id}>
+                                  <TableCell>{lote.nombre}</TableCell>
+                                  <TableCell>{lote.fecha}</TableCell>
+                                  <TableCell>{lote.hibrido}</TableCell>
+                                  <TableCell>{lote.superficie}</TableCell>
+                                  <TableCell colSpan={1}>-</TableCell>
+                                  <TableCell className="text-right">
+                                    <Button variant="default" size="sm">
+                                      Enviar seguimiento a Nidera
+                                    </Button>
+                                  </TableCell>
+                                  <TableCell className="text-right">
+                                  {lote.sembrado &&
+                                    <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
+                                  }
+                                  </TableCell>
+                                </TableRow>
+                                ))
+                              }</>
+                            </TableBody>
+                          </Table>
+                        </TableCell>
+                      </TableRow>
                     </CollapsibleContent>
+                    }
                   </>
                 </Collapsible>
                 ))

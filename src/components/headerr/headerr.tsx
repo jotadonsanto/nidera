@@ -2,10 +2,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser  } from '@fortawesome/free-regular-svg-icons';
 
-import { HeaderProfile } from "@/components/Header/HeaderProfile";
+import { HeaderProfile } from "@/components/headerr/headerrProfile";
 
 export function Header() {
   return (

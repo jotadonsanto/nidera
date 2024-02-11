@@ -1,9 +1,13 @@
 "use client"
 
+import DataTable from '@/components/recomendaciones/recomendacionesDataTable';
+import { tableData } from '@/app/mockFile';
+
 export default function Recomendaciones() {
   return (
-    <main>
-      hola
-    </main>
+    <div className="px-10">
+      <DataTable
+       list={tableData} />
+    </div>
   );
 }
