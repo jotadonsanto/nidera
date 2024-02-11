@@ -16,7 +16,9 @@ export function Header() {
           width={71}
           height={40}
           alt="Picture of the author" />
-        <Button variant="link">&#60; Volver a Experiencia Nidera</Button>
+        <Button variant="link">
+          <Link href="/">&#60; Volver a Experiencia Nidera</Link>
+        </Button>
       </div>
       <div className="self-end">
         <Tabs value={usePathname()} className="w-[400px]">
