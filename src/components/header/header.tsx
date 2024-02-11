@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
 
-import { HeaderProfile } from "@/components/headerr/headerrProfile";
+import { HeaderProfile } from "@/components/header/headerProfile";
 
 export function Header() {
   return (

@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { cn } from "@/lib/utils"
 import "./globals.css";
 
-import { Header } from '@/components/headerr/headerr';
+import { Header } from '@/components/header/header';
 
 export const titillium = Titillium_Web({
   subsets: ["latin"],
