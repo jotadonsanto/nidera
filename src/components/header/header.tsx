@@ -19,7 +19,7 @@ export function Header() {
         <Button variant="link">&#60; Volver a Experiencia Nidera</Button>
       </div>
       <div className="self-end">
-        <Tabs value={usePathname} className="w-[400px]">
+        <Tabs value={usePathname()} className="w-[400px]">
           <TabsList>
             <TabsTrigger value="/">
               <Link href="/">Dashboard</Link>
