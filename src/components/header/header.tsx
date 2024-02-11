@@ -1,5 +1,7 @@
 "use client"
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
 
@@ -17,11 +19,15 @@ export function Header() {
         <Button variant="link">&#60; Volver a Experiencia Nidera</Button>
       </div>
       <div className="self-end">
-        <Tabs defaultValue="account" className="w-[400px]">
+        <Tabs value={usePathname} className="w-[400px]">
           <TabsList>
-            <TabsTrigger value="soraya">Dashboard</TabsTrigger>
-            <TabsTrigger value="account">Mis Recomendaciones</TabsTrigger>
-            <TabsTrigger value="password">Mis Lotes</TabsTrigger>
+            <TabsTrigger value="/">
+              <Link href="/">Dashboard</Link>
+            </TabsTrigger>
+            <TabsTrigger value="/recomendaciones">
+              <Link href="/recomendaciones">Mis Recomendaciones</Link>
+            </TabsTrigger>
+            <TabsTrigger value="/lotes">Mis Lotes</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
