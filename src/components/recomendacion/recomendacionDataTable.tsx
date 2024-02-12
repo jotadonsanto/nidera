@@ -84,7 +84,7 @@ export default function DataTable({ list }: { list: Recomendacion[] }) {
               <CollapsibleContent asChild>
                 <TableRow className="-mt-4">
                   <TableCell colSpan={10} className="p-0">
-                    <Table className="border-spacing-y-0">
+                    <Table className="border-spacing-y-0 bg-gray-50 rounded-lg">
                       <TableHeader>
                         <TableRow className="">
                           <TableHead>Lote</TableHead>
@@ -98,17 +98,17 @@ export default function DataTable({ list }: { list: Recomendacion[] }) {
                         <>{
                         recomendacion.lotes.map((lote: Lote) => (
                           <TableRow key={lote.id.toString()}>
-                            <TableCell>{lote.nombre}</TableCell>
-                            <TableCell>{lote.fecha}</TableCell>
-                            <TableCell>{lote.hibrido}</TableCell>
-                            <TableCell>{lote.superficie}</TableCell>
-                            <TableCell colSpan={1}>-</TableCell>
-                            <TableCell className="text-right">
+                            <TableCell className="border-b">{lote.nombre}</TableCell>
+                            <TableCell className="border-b">{lote.fecha}</TableCell>
+                            <TableCell className="border-b">{lote.hibrido}</TableCell>
+                            <TableCell className="border-b">{lote.superficie}</TableCell>
+                            <TableCell className="border-b" colSpan={1}>-</TableCell>
+                            <TableCell className="border-b text-right">
                               <Button variant="default" size="sm">
                                 Enviar seguimiento a Nidera
                               </Button>
                             </TableCell>
-                            <TableCell colSpan={2} className="text-center">
+                            <TableCell className="border-b text-center" colSpan={2}>
                             {lote.sembrado &&
                               <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
                             }

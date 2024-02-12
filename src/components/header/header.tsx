@@ -8,6 +8,9 @@ import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
 import { HeaderProfile } from "@/components/header/headerProfile";
 
 export default function Header() {
+
+  const url = `/${usePathname().split('/')[1]}`;
+
   return (
     <header className="bg-neutral-050 w-full flex flex-row justify-between items-center px-10 h-14">
       <div className="flex gap-10">
@@ -21,7 +24,7 @@ export default function Header() {
         </Button>
       </div>
       <div className="self-end">
-        <Tabs value={usePathname()} className="w-[400px]">
+        <Tabs value={url} className="w-[400px]">
           <TabsList>
             <TabsTrigger value="/">
               <Link href="/">Dashboard</Link>

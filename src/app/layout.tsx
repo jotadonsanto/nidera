@@ -29,15 +29,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(
-          "min-h-screen bg-background antialiased flex flex-col",
-          titillium.className
-        )}>
-          <Header />
-          <main className="flex flex-1 w-full">
-            {children}
-          </main>
-          <Toaster />
-        </body>
+        "min-h-screen min-w-[1024px] bg-background antialiased flex flex-col",
+        titillium.className
+      )}>
+        <Header />
+        <main className="hidden lg:flex flex-1 w-full justify-center">
+          {children}
+        </main>
+        <p className="flex lg:hidden flex-1 w-full items-center justify-center">No soportamos dispositivos pequeños :(</p>
+        <Toaster />
+      </body>
     </html>
   );
 }

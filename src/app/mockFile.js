@@ -8,10 +8,10 @@ const tableData = [
     cultivo: 'Girasol',
     estado: 'processing',
     creado: 'Rosmualdo Loaizaga',
-    sembrado: false,
+    sembrado: true,
     lotes: [
       {
-        id: 100,
+        id: 106,
         nombre: 'Nombre del lote',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
@@ -19,7 +19,7 @@ const tableData = [
         sembrado: true,
       },
       {
-        id: 100,
+        id: 107,
         nombre: 'Nombre del lote',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
@@ -27,7 +27,7 @@ const tableData = [
         sembrado: true,
       },
       {
-        id: 100,
+        id: 108,
         nombre: 'Nombre del lote',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
@@ -46,35 +46,6 @@ const tableData = [
     estado: 'downloaded',
     creado: 'Rosmualdo Loaizaga',
     sembrado: false,
-    lotes: [
-      {
-        id: 100,
-        nombre: 'Nombre del lote',
-        fecha: '24/12/12',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
-        superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
-        sembrado: true,
-      },
-      {
-        id: 100,
-        nombre: 'Nombre del lote',
-        fecha: '24/12/12',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
-        superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
-        sembrado: true,
-      },
-      {
-        id: 100,
-        nombre: 'Nombre del lote',
-        fecha: '24/12/12',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
-        superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
-        sembrado: true,
-      }
-    ]
   },
   {
     id: 3,
@@ -97,7 +68,7 @@ const tableData = [
         sembrado: true,
       },
       {
-        id: 100,
+        id: 101,
         nombre: 'Nombre del lote',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
@@ -106,7 +77,7 @@ const tableData = [
         sembrado: true,
       },
       {
-        id: 100,
+        id: 102,
         nombre: 'Nombre del lote',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
@@ -125,7 +96,36 @@ const tableData = [
     cultivo: 'Girasol',
     estado: 'results_available',
     creado: 'Rosmualdo Loaizaga',
-    sembrado: false,
+    sembrado: true,
+    lotes: [
+      {
+        id: 103,
+        nombre: 'Nombre del lote',
+        fecha: '24/12/12',
+        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        superficie: '3000 ha',
+        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        sembrado: true,
+      },
+      {
+        id: 104,
+        nombre: 'Nombre del lote',
+        fecha: '24/12/12',
+        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        superficie: '3000 ha',
+        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        sembrado: true,
+      },
+      {
+        id: 105,
+        nombre: 'Nombre del lote',
+        fecha: '24/12/12',
+        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        superficie: '3000 ha',
+        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        sembrado: true,
+      }
+    ]
   },
   {
     id: 5,
@@ -136,7 +136,7 @@ const tableData = [
     cultivo: 'Girasol',
     estado: 'processing',
     creado: 'Rosmualdo Loaizaga',
-    sembrado: true,
+    sembrado: false,
   },
   {
     id: 6,
@@ -158,7 +158,7 @@ const tableData = [
     cultivo: 'Maiz Temprano',
     estado: 'sent',
     creado: 'Rosmualdo Loaizaga',
-    sembrado: true,
+    sembrado: false,
   },
   {
     id: 8,
@@ -171,7 +171,6 @@ const tableData = [
     creado: 'Rosmualdo Loaizaga',
     sembrado: false,
   },
-
   {
     id: 9,
     cliente: 'Fortalezza SA',
