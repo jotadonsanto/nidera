@@ -16,7 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faChevronDown  } from '@fortawesome/free-solid-svg-icons';
 
-import type { Recomendacion, Lote } from '@/components/recomendaciones/Recomendaciones';
+import type { Recomendacion, Lote } from '@/components/recomendacion/Recomendacion';
 
 const recomendacionStatus = (status: Recomendacion["estado"]) => {
   switch (status) {

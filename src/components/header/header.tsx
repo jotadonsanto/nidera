@@ -7,7 +7,7 @@ import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
 
 import { HeaderProfile } from "@/components/header/headerProfile";
 
-export function Header() {
+export default function Header() {
   return (
     <header className="bg-neutral-050 w-full flex flex-row justify-between items-center px-10 h-14">
       <div className="flex gap-10">
@@ -26,8 +26,8 @@ export function Header() {
             <TabsTrigger value="/">
               <Link href="/">Dashboard</Link>
             </TabsTrigger>
-            <TabsTrigger value="/recomendaciones">
-              <Link href="/recomendaciones">Mis Recomendaciones</Link>
+            <TabsTrigger value="/recomendacion">
+              <Link href="/recomendacion">Mis Recomendaciones</Link>
             </TabsTrigger>
             <TabsTrigger value="/lotes">Mis Lotes</TabsTrigger>
           </TabsList>

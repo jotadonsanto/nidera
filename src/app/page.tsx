@@ -104,117 +104,120 @@ export default function Home() {
       <div className="grid grid-cols-1 gap-10 w-full">
 
         {/* Table */}
-        <div>
-          <h3 className="text-2xl">Table</h3>
-          <Table>
-            <TableCaption>A list of your recent invoices.</TableCaption>
-            <TableHeader>
-              <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Cliente</TableHead>
-                <TableHead>Propiedad</TableHead>
-                <TableHead>Cant. Lote</TableHead>
-                <TableHead>Distribuidor</TableHead>
-                <TableHead>Cultivo</TableHead>
-                <TableHead>Estado</TableHead>
-                <TableHead>Creado por</TableHead>
-                <TableHead className="w-[60px]">Sembrado</TableHead>
-                <TableHead></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {
-              tableData.map((recomendacion) => (
-                <Collapsible key={recomendacion.id} asChild>
-                  <>
-                    <CollapsibleTrigger asChild type={undefined} className="cursor-pointer">
-                      {/* Acá se itera cada fila de la tabla */}
-                      <TableRow>
-                          <TableCell>{recomendacion.id}</TableCell>
-                          <TableCell>{recomendacion.cliente}</TableCell>
-                          <TableCell>{recomendacion.propiedad}</TableCell>
-                          <TableCell>{recomendacion.cantidad}</TableCell>
-                          <TableCell>{recomendacion.distribuidor}</TableCell>
-                          <TableCell>{recomendacion.cultivo}</TableCell>
-                          <TableCell>
-                            { recomendacionStatus(recomendacion.estado) }
-                          </TableCell>
-                          <TableCell>{recomendacion.creado}</TableCell>
-                          <TableCell className="text-center">
-                            {recomendacion.sembrado &&
-                              <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
-                            }
-                          </TableCell>
-                          <TableCell className="text-center">
-                            <FontAwesomeIcon icon={faChevronDown} size="sm" className="text-gray-500 mr-2" />
-                          </TableCell>
-                      </TableRow>
-                    </CollapsibleTrigger>
+        <div className="flex gap-8">
+          <div>
+            {/* Color Palette */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-2xl">Neutral Colors</h3>
+              <div className="flex flex-col flex-wrap gap-4">
+                <div className="h-9 w-9 bg-neutral-100" />
+                <div className="h-9 w-9 bg-neutral-200" />
+                <div className="h-9 w-9 bg-neutral-300" />
+                <div className="h-9 w-9 bg-neutral-400" />
+                <div className="h-9 w-9 bg-neutral-500" />
+                <div className="h-9 w-9 bg-neutral-600" />
+                <div className="h-9 w-9 bg-neutral-700" />
+                <div className="h-9 w-9 bg-neutral-800" />
+                <div className="h-9 w-9 bg-neutral-900" />
+              </div>
+            </div>
+          </div>
+          <div className="flex-1">
+            <h3 className="text-2xl">Table</h3>
+            <Table>
+              <TableCaption>A list of your recent invoices.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>ID</TableHead>
+                  <TableHead>Cliente</TableHead>
+                  <TableHead>Propiedad</TableHead>
+                  <TableHead>Cant. Lote</TableHead>
+                  <TableHead>Distribuidor</TableHead>
+                  <TableHead>Cultivo</TableHead>
+                  <TableHead>Estado</TableHead>
+                  <TableHead>Creado por</TableHead>
+                  <TableHead className="w-[60px]">Sembrado</TableHead>
+                  <TableHead></TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {
+                tableData.map((recomendacion) => (
+                  <Collapsible key={recomendacion.id} asChild>
+                    <>
+                      <CollapsibleTrigger asChild type={undefined} className="cursor-pointer">
+                        {/* Acá se itera cada fila de la tabla */}
+                        <TableRow>
+                            <TableCell>{recomendacion.id}</TableCell>
+                            <TableCell>{recomendacion.cliente}</TableCell>
+                            <TableCell>{recomendacion.propiedad}</TableCell>
+                            <TableCell>{recomendacion.cantidad}</TableCell>
+                            <TableCell>{recomendacion.distribuidor}</TableCell>
+                            <TableCell>{recomendacion.cultivo}</TableCell>
+                            <TableCell>
+                              { recomendacionStatus(recomendacion.estado) }
+                            </TableCell>
+                            <TableCell>{recomendacion.creado}</TableCell>
+                            <TableCell className="text-center">
+                              {recomendacion.sembrado &&
+                                <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
+                              }
+                            </TableCell>
+                            <TableCell className="text-center">
+                              <FontAwesomeIcon icon={faChevronDown} size="sm" className="text-gray-500 mr-2" />
+                            </TableCell>
+                        </TableRow>
+                      </CollapsibleTrigger>
 
-                    {/* Si tiene data que desplegar */}
-                    {recomendacion.lotes?.length &&
-                    <CollapsibleContent asChild className="CollapsibleContent">
-                      <TableRow>
-                        <TableCell colSpan={10}>
-                          <Table>
-                            <TableHeader>
-                              <TableRow>
-                                <TableHead>Lote</TableHead>
-                                <TableHead>Fecha de siembra</TableHead>
-                                <TableHead>Hibrido</TableHead>
-                                <TableHead colSpan={4}>Superficie</TableHead>
-                                <TableHead>Sembrado</TableHead>
-                              </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                              <>{
-                              recomendacion.lotes.map((lote) => (
-                                <TableRow key={lote.id}>
-                                  <TableCell>{lote.nombre}</TableCell>
-                                  <TableCell>{lote.fecha}</TableCell>
-                                  <TableCell>{lote.hibrido}</TableCell>
-                                  <TableCell>{lote.superficie}</TableCell>
-                                  <TableCell colSpan={1}>-</TableCell>
-                                  <TableCell className="text-right">
-                                    <Button variant="default" size="sm">
-                                      Enviar seguimiento a Nidera
-                                    </Button>
-                                  </TableCell>
-                                  <TableCell className="text-right">
-                                  {lote.sembrado &&
-                                    <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
-                                  }
-                                  </TableCell>
+                      {/* Si tiene data que desplegar */}
+                      {recomendacion.lotes?.length &&
+                      <CollapsibleContent asChild className="CollapsibleContent">
+                        <TableRow>
+                          <TableCell colSpan={10}>
+                            <Table>
+                              <TableHeader>
+                                <TableRow>
+                                  <TableHead>Lote</TableHead>
+                                  <TableHead>Fecha de siembra</TableHead>
+                                  <TableHead>Hibrido</TableHead>
+                                  <TableHead colSpan={4}>Superficie</TableHead>
+                                  <TableHead>Sembrado</TableHead>
                                 </TableRow>
-                                ))
-                              }</>
-                            </TableBody>
-                          </Table>
-                        </TableCell>
-                      </TableRow>
-                    </CollapsibleContent>
-                    }
-                  </>
-                </Collapsible>
-                ))
-              }
-            </TableBody>
-          </Table>
-        </div>
-
-        {/* Color Palette */}
-        <div className="flex flex-col gap-4">
-          <h3 className="text-2xl">Neutral Colors</h3>
-          <div className="flex flex-col flex-wrap gap-4">
-            <div className="h-9 w-9 bg-neutral-100" />
-            <div className="h-9 w-9 bg-neutral-200" />
-            <div className="h-9 w-9 bg-neutral-300" />
-            <div className="h-9 w-9 bg-neutral-400" />
-            <div className="h-9 w-9 bg-neutral-500" />
-            <div className="h-9 w-9 bg-neutral-600" />
-            <div className="h-9 w-9 bg-neutral-700" />
-            <div className="h-9 w-9 bg-neutral-800" />
-            <div className="h-9 w-9 bg-neutral-900" />
+                              </TableHeader>
+                              <TableBody>
+                                <>{
+                                recomendacion.lotes.map((lote) => (
+                                  <TableRow key={lote.id}>
+                                    <TableCell>{lote.nombre}</TableCell>
+                                    <TableCell>{lote.fecha}</TableCell>
+                                    <TableCell>{lote.hibrido}</TableCell>
+                                    <TableCell>{lote.superficie}</TableCell>
+                                    <TableCell colSpan={1}>-</TableCell>
+                                    <TableCell className="text-right">
+                                      <Button variant="default" size="sm">
+                                        Enviar seguimiento a Nidera
+                                      </Button>
+                                    </TableCell>
+                                    <TableCell className="text-right">
+                                    {lote.sembrado &&
+                                      <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
+                                    }
+                                    </TableCell>
+                                  </TableRow>
+                                  ))
+                                }</>
+                              </TableBody>
+                            </Table>
+                          </TableCell>
+                        </TableRow>
+                      </CollapsibleContent>
+                      }
+                    </>
+                  </Collapsible>
+                  ))
+                }
+              </TableBody>
+            </Table>
           </div>
         </div>
 

@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { cn } from "@/lib/utils"
 import "./globals.css";
 
-import { Header } from '@/components/header/header';
+import Header from '@/components/header/header';
 
 export const titillium = Titillium_Web({
   subsets: ["latin"],
@@ -29,11 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(
-          "min-h-screen bg-background antialiased",
+          "min-h-screen bg-background antialiased flex flex-col",
           titillium.className
         )}>
           <Header />
-          <main>
+          <main className="flex flex-1 w-full">
             {children}
           </main>
           <Toaster />
