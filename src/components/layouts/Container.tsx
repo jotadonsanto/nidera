@@ -9,7 +9,7 @@ export default function Container({ top, left, right, main }: {
       <>{ top }</>
       <>{ main }</>
       {
-        left !== undefined || right !== undefined &&
+        (left !== undefined || right !== undefined) &&
         <div className="flex flex-1">
           <>{ left }</>
           <>{ right }</>

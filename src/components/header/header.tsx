@@ -12,7 +12,7 @@ export default function Header() {
   const url = `/${usePathname().split('/')[1]}`;
 
   return (
-    <header className="bg-neutral-050 w-full flex flex-row justify-between items-center px-10 h-14">
+    <header className="bg-neutral-050 w-full flex flex-row justify-between items-center shrink-0 px-10 h-14">
       <div className="flex gap-10">
         <Image
           src="/logo.svg"

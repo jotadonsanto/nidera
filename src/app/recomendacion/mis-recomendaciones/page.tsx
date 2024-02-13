@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Container from '@/components/layouts/Container';
 import MainSide from '@/components/layouts/MainSide';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +20,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@
 import DataTable from '@/components/recomendacion/recomendacionDataTable';
 
 import { tableData } from '@/app/mockFile';
+import type { Recomendacion } from '@/components/recomendacion/recomendacion';
 
 // Form libraries and validations.
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -42,6 +45,18 @@ const FormSchema = z.object({
 })
 
 export default function Recomendaciones() {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<Recomendacion[]>([]);
+
+  useEffect(()=>{
+    // faking API delay
+    setTimeout(() => {
+      console.log('despues de n segundos carga');
+      setData(tableData);
+      setLoading(false);
+    }, 1000);
+  },[])
+
   const form = useForm<z.infer<typeof FormSchema>>({
     // resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -74,7 +89,9 @@ export default function Recomendaciones() {
               <FontAwesomeIcon icon={faUserCheck} size="1x" className="text-primary" />
               <h3 className="font-bold">Mis Recomendaciones</h3>
             </div>
-            <Button variant="default">Crear Recomendación</Button>
+            <Link href="/recomendacion/nueva">
+              <Button variant="default">Crear Recomendación</Button>
+            </Link>
           </div>
 
           {/* Filtros de la tabla */}
@@ -183,7 +200,7 @@ export default function Recomendaciones() {
               </form>
             </Form>
           </div>
-          <DataTable list={tableData} />
+          <DataTable list={data} loading={loading} />
         </MainSide>
       }
     />

@@ -29,11 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(
-        "min-h-screen min-w-[1024px] bg-background antialiased flex flex-col",
+        "min-h-screen max-h-screen min-w-[1024px] bg-background antialiased flex flex-col",
         titillium.className
       )}>
         <Header />
-        <main className="hidden lg:flex flex-1 w-full justify-center">
+        <main className="hidden lg:flex flex-col flex-1 w-full justify-center">
           {children}
         </main>
         <p className="flex lg:hidden flex-1 w-full items-center justify-center">No soportamos dispositivos pequeños :(</p>

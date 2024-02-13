@@ -6,6 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableCaption,
 } from "@/components/ui/table";
 import {
   Collapsible,
@@ -33,9 +34,11 @@ const recomendacionStatus = (status: Recomendacion["estado"]) => {
   }
 }
 
-export default function DataTable({ list }: { list: Recomendacion[] }) {
+export default function DataTable({ list, loading }: { list: Recomendacion[], loading: boolean }) {
   return (
     <Table className="px-1">
+      {loading && <TableCaption>Loading...</TableCaption>}
+      {(!loading && !list.length) && <TableCaption>Aún no tienes recomendaciones!</TableCaption>}
       {/* Header de la tabla principal */}
       <TableHeader>
         <TableRow>

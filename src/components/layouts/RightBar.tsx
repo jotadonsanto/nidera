@@ -1,6 +1,12 @@
-export default function RightBar({ children }: { children: string | JSX.Element | JSX.Element[] | (() => JSX.Element) }) {
+import { cn } from "@/lib/utils";
+
+export default function RightBar({ className, children }: { className: string, children: string | JSX.Element | JSX.Element[] | (() => JSX.Element) }) {
   return (
-    <div className="flex-1">
+    <div
+    className={cn(
+      "flex-1",
+      className
+    )}>
       <>{ children }</>
     </div>
   )
