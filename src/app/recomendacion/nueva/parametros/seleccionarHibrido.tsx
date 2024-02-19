@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from "@/components/ui/select";
-import type { Lote } from '@/components/recomendacion/recomendacion';
+import type { Lote } from '@/app/recomendacion/recomendacion';
 import { Badge } from "@/components/ui/badge";
 
 export default function SeleccionarHibrido(props: any) {

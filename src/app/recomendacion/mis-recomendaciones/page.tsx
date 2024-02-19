@@ -17,10 +17,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import RecomendacionDataTable from '@/components/recomendacion/recomendacionDataTable';
+import RecomendacionesTable from '@/app/recomendacion/mis-recomendaciones/recomendacionesTable';
 
 import { tableData } from '@/app/mockFile';
-import type { Recomendacion } from '@/components/recomendacion/recomendacion';
+import type { Recomendacion } from '@/app/recomendacion/recomendacion';
 
 // Form libraries and validations.
 import { useForm } from "react-hook-form"
@@ -199,7 +199,7 @@ export default function Recomendaciones() {
               </form>
             </Form>
           </div>
-          <RecomendacionDataTable list={data} loading={loading} />
+          <RecomendacionesTable list={data} loading={loading} />
         </MainSide>
       }
     />
