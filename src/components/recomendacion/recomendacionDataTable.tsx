@@ -14,6 +14,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Badge } from "@/components/ui/badge";
+import { Loading } from '@/components/ui/loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faChevronDown  } from '@fortawesome/free-solid-svg-icons';
 
@@ -37,7 +38,7 @@ const recomendacionStatus = (status: Recomendacion["estado"]) => {
 export default function DataTable({ list, loading }: { list: Recomendacion[], loading: boolean }) {
   return (
     <Table className="px-1">
-      {loading && <TableCaption>Loading...</TableCaption>}
+      {loading && <TableCaption><Loading /></TableCaption>}
       {(!loading && !list.length) && <TableCaption>Aún no tienes recomendaciones!</TableCaption>}
       {/* Header de la tabla principal */}
       <TableHeader>

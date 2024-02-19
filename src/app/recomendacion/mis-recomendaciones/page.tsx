@@ -17,13 +17,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import DataTable from '@/components/recomendacion/recomendacionDataTable';
+import RecomendacionDataTable from '@/components/recomendacion/recomendacionDataTable';
 
 import { tableData } from '@/app/mockFile';
 import type { Recomendacion } from '@/components/recomendacion/recomendacion';
 
 // Form libraries and validations.
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 const FormSchema = z.object({
@@ -200,7 +199,7 @@ export default function Recomendaciones() {
               </form>
             </Form>
           </div>
-          <DataTable list={data} loading={loading} />
+          <RecomendacionDataTable list={data} loading={loading} />
         </MainSide>
       }
     />

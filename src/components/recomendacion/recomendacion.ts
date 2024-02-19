@@ -16,8 +16,10 @@ type Lote = {
   nombre: string,
   fecha: string,
   hibrido: string,
-  superficie: string,
-  sembrado: boolean,
+  superficie?: string,
+  estrategia?: string,
+  sembrado?: boolean,
+  riego?: boolean,
 }
 
 export type {

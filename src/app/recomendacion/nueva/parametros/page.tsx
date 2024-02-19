@@ -1,10 +1,13 @@
 "use client"
 
+import Link from 'next/link';
 import Container from '@/components/layouts/Container';
 import MainSide from '@/components/layouts/MainSide';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@/components/ui/breadcrumb';
 import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight  } from '@fortawesome/free-solid-svg-icons';
 import { faLayerGroup, faLocationDot  } from '@fortawesome/free-solid-svg-icons';
 import { faFileLines } from '@fortawesome/free-regular-svg-icons';
 
@@ -19,6 +22,10 @@ export default function Parametros() {
   const handleState = (field: string, value: string | []) => {
     // having the field and value, dynamically run the set
     eval('set' + field.charAt(0).toUpperCase() + field.slice(1) + "(value)");
+  }
+
+  const isInvalid = () => {
+    return !cultivo.length || !lotes.length;
   }
 
   return (
@@ -63,6 +70,14 @@ export default function Parametros() {
           </Breadcrumb>
           <SeleccionarCultivo handleChange={handleState} />
           <SeleccionarHibrido />
+          <div className="flex justify-end">
+            <Link href="/recomendacion/mis-recomendaciones">
+              <Button className="w-72 flex justify-between" disabled={isInvalid()} >
+                CREAR RECOMENDACIÓN
+                <FontAwesomeIcon icon={faArrowRight} className="text-primary-foreground" />
+              </Button>
+            </Link>
+          </div>
         </MainSide>
       }
     />
