@@ -1,12 +1,28 @@
 
-## Nidera
-Next JS
-Shadcn
-Tailwind
+## Proyecto Nidera
+Librerias usadas en este proyecto:
+
+- [`Next.js`](https://nextjs.org/)
+Framework de React que nos da muchas funcionalidades como router, componente Link, componente Image, leer query params, manejar layout, cargar fuentes desde Google Fonts, configurar la metaData dinamicamente, 404 page en caso de ingresar una ruta invalida, SSR, etc.
+- [`shadcn`](https://ui.shadcn.com/)
+shadcn es una libreria de componentes basada en Radix y Tailwind CSS. Nos da componentes hechos, 100% customizables, responsive y con todas las funcionalidades de accesibilidad out of the box.
+- [`Radix`](https://www.radix-vue.com/components/)
+- [`Tailwind CSS`](https://tailwindui.com/)
+Adjunto link al tailwind cheatsheet donde estan todas las clases disponibles, muy facil de usar sin escribir una linea de css.
+https://nerdcave.com/tailwind-cheat-sheet
+- [`React Hook Form`](https://react-hook-form.com/)
+El hook de React mas conocido para manejar formularios y validaciones.
+- [`Font Awesome Icons`](https://fontawesome.com/icons)
+
+- [`Typescript`](https://www.typescriptlang.org/)
+Dada la complejidad de muchas de las tablas y la estructura de datos, recomiendo usar Typescript.
 
 ------------------
 
+Aqui debajo dejo el resto del Readme que viene con NEXTJS.
+Tiene todos los comandos necesarios para levantar la aplicacion.
 
+------------------
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
