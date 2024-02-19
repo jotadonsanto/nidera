@@ -9,16 +9,21 @@ import SeleccionarCliente from '@/app/recomendacion/nueva/seleccionarCliente';
 import SeleccionarPropiedad from '@/app/recomendacion/nueva/seleccionarPropiedad';
 import SeleccionarLotes from '@/app/recomendacion/nueva/seleccionarLotes';
 
+
+import Link from "next/link";
+import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight  } from '@fortawesome/free-solid-svg-icons';
+import { faLayerGroup, faLocationDot  } from '@fortawesome/free-solid-svg-icons';
+import { faFileLines } from '@fortawesome/free-regular-svg-icons';
 
 export default function Nueva() {
   const [cliente, setCliente] = useState<string>("");
   const [propiedad, setPropiedad] = useState<string>("");
   const [lotes, setLotes] = useState<string[] | []>([]);
   const handleState = (field: string, value: string | []) => {
-    // cliente, valor
+    // having the field and value, dynamically run the set
     eval('set' + field.charAt(0).toUpperCase() + field.slice(1) + "(value)");
   }
 
@@ -28,9 +33,25 @@ export default function Nueva() {
 
   return (
     <Container
-      right={
-        <RightBar className="bg-green-200">
-        </RightBar>
+      top={
+        <div className='flex items-end justify-center pt-5 border-b'>
+          <Tabs value={'cliente/lotes'} className="w-[400px]">
+            <TabsList>
+              <TabsTrigger value="cliente/lotes">
+                <FontAwesomeIcon icon={faLocationDot} size={'lg'} className="mr-3" />
+                Clientes/Lotes
+              </TabsTrigger>
+              <TabsTrigger value=''>
+                <FontAwesomeIcon icon={faLayerGroup} size={'lg'} className="mr-3" />
+                Parámetros
+              </TabsTrigger>
+              <TabsTrigger value=''>
+                <FontAwesomeIcon icon={faFileLines} size={'lg'} className="mr-3" />
+                Recomendación
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
       }
 
       left={
@@ -44,11 +65,15 @@ export default function Nueva() {
           }
           <div className="mt-auto">
             <Button className="w-full flex justify-between" disabled={isInvalid()} >
-              CONTINUAR
+              <Link href="/recomendacion/nueva/parametros">CONTINUAR</Link>
               <FontAwesomeIcon icon={faArrowRight} className="text-primary-foreground" />
             </Button>
           </div>
         </LeftBar>
+      }
+      right={
+        <RightBar className="bg-green-200">
+        </RightBar>
       }
     />
   );

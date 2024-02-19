@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export default function RightBar({ className, children }: { className: string, children: string | JSX.Element | JSX.Element[] | (() => JSX.Element) }) {
+export default function RightBar({ className, children }: { className?: string, children?: string | JSX.Element | JSX.Element[] | (() => JSX.Element) }) {
   return (
     <div
     className={cn(

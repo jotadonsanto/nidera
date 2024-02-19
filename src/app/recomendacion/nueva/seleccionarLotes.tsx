@@ -5,6 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem} from '@/components/ui/dropdown-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical  } from '@fortawesome/free-solid-svg-icons';
+import { Badge } from "@/components/ui/badge";
 
 const lotes = [{ id: '1234' }, { id: '2345' }, { id: '3456' }, { id: '4567' }, { id: '5678' },{ id: '12234' }, { id: '23445' }, { id: '34556' }, { id: '45667' }, { id: '567823' },{ id: '1234234' }, { id: '2345435' }, { id: '3464556' }, { id: '4576567' }, { id: '5687678' }];
 
@@ -13,7 +14,7 @@ export default function SeleccionarLotes(props: any) {
   const handleAdd = (id: string) => {
     const newState = [...state, id];
     setState(newState);
-    props.handleChange('lotes', state);
+    props.handleChange('lotes', newState);
   }
 
   const isSelected = (id: string) => state.includes(id);
@@ -28,7 +29,12 @@ export default function SeleccionarLotes(props: any) {
         (isSelected(props.lote.id) ? "border-green-600 border-2" : "border-gray-100")}>
       <div className="flex justify-between items-center">
         <div>
-          <p className="text-sm font-bold">Nombre del lote</p>
+          <div className="flex gap-2">
+            <p className="text-sm font-bold">
+              Nombre del lote
+            </p>
+            <Badge variant={'destructive'}>Enviado</Badge>
+          </div>
           {isSelected(props.lote.id) &&
             <>
               <p className="text-sm text-gray-500">5 Lotes</p>
@@ -56,6 +62,7 @@ export default function SeleccionarLotes(props: any) {
           </DropdownMenu>
           <Checkbox
             className="ml-2"
+            squared
             checked={isSelected(props.lote.id)}
             onCheckedChange={(value) => handleAdd(props.lote.id)} />
         </div>

@@ -5,13 +5,17 @@ import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
 import { CheckIcon } from "@radix-ui/react-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle  } from '@fortawesome/free-solid-svg-icons';
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 import { cn } from "@/lib/utils"
 
+interface CheckboxItemProps
+  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
+  squared?: boolean
+}
+
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
+  CheckboxItemProps
 >(({ className, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
@@ -25,7 +29,7 @@ const Checkbox = React.forwardRef<
       className={cn("flex items-center justify-center text-current")}
     >
       <>
-      <FontAwesomeIcon icon={faCheckCircle} className="text-green-600" />
+      {props.squared ? <CheckIcon className="h-4 w-4 bg-green-600 rounded text-white" /> : <FontAwesomeIcon icon={faCheckCircle} className="text-green-600" />}
       </>
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>

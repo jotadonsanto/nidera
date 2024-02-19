@@ -4,7 +4,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectI
 export default function SeleccionarCliente(props: any) {
   return (
     <div className="border-b">
-      <Label className="mb-2">Cliente</Label>
+      <Label className="mb-2">Seleccionar Cliente</Label>
       <Select onValueChange={(value) => props.handleChange('cliente', value)}>
         <SelectTrigger>
           <SelectValue placeholder="Seleccionar Cliente" />
