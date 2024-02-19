@@ -30,7 +30,7 @@ export default function Header() {
               <Link href="/">Dashboard</Link>
             </TabsTrigger>
             <TabsTrigger value="/recomendacion">
-              <Link href="/recomendacion">Mis Recomendaciones</Link>
+              <Link href="/recomendacion/mis-recomendaciones">Mis Recomendaciones</Link>
             </TabsTrigger>
             <TabsTrigger value="/lotes">Mis Lotes</TabsTrigger>
           </TabsList>

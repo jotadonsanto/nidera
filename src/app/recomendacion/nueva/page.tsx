@@ -64,10 +64,12 @@ export default function Nueva() {
             <SeleccionarLotes handleChange={handleState} />
           }
           <div className="mt-auto">
-            <Button className="w-full flex justify-between" disabled={isInvalid()} >
-              <Link href="/recomendacion/nueva/parametros">CONTINUAR</Link>
-              <FontAwesomeIcon icon={faArrowRight} className="text-primary-foreground" />
-            </Button>
+            <Link href="/recomendacion/nueva/parametros">
+              <Button className="w-full flex justify-between" disabled={isInvalid()} >
+                CONTINUAR
+                <FontAwesomeIcon icon={faArrowRight} className="text-primary-foreground" />
+              </Button>
+            </Link>
           </div>
         </LeftBar>
       }
