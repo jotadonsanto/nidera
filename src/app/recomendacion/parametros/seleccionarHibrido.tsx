@@ -17,7 +17,7 @@ export default function SeleccionarHibrido(props: any) {
     riego: true,
     estrategia: 'agresiva',
     fecha: '',
-    hibrido: 'AJKH8AS618A',
+    hibrido: 'AJKH8AS61218A',
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export default function SeleccionarHibrido(props: any) {
     riego: true,
     estrategia: 'agresiva',
     fecha: '',
-    hibrido: 'AJKH8AS618A',
+    hibrido: 'AJKHF8AS618A',
   },
   {
     id: 3,
@@ -33,14 +33,25 @@ export default function SeleccionarHibrido(props: any) {
     riego: true,
     estrategia: 'agresiva',
     fecha: '',
-    hibrido: 'AJKH8AS618A',
+    hibrido: 'AJKH8AAS618A',
   }];
 
-  const [selected, setSelected] = useState<Lote[]>([]);
+  const [selected, setSelected] = useState<Lote[]>([])
+
+  const isLoteIncluded = (lote: Lote) => {
+    if (selected.find((l) => l.id === lote.id) !== undefined) return true;
+    return false;
+  }
+
+  const handleSelected = (field: string, value: Lote) => {
+    const newState = isLoteIncluded(value) ? selected.filter((lote) => lote !== value) : [...selected, value];
+    setSelected(newState)
+    props.handleChange(field, newState);
+  }
 
   const CultivoCard = (props: { lote: Lote }) => (
     <div
-      className={"flex items-stretch justify-between flex-1 rounded-lg shadow-gray-200 shadow " + (selected.includes(props.lote) ? 'border-l-8 border-primary' : '')}>
+      className={"flex items-stretch justify-between flex-1 rounded-lg shadow-gray-200 shadow " + (isLoteIncluded(props.lote) ? 'border-l-8 border-primary' : '')}>
       <div className="flex flex-1 items-center gap-8 pl-4 py-2">
         <Image
           src="/map.jpg"
@@ -50,7 +61,7 @@ export default function SeleccionarHibrido(props: any) {
         <div className="flex flex-col gap-2">
           <span className="font-semibold">{props.lote.nombre}</span>
           <div className="flex items-center gap-2">
-            <Checkbox id="check" squared />
+            <Checkbox id="check" squared={true} />
             <label
               htmlFor="check"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -63,7 +74,7 @@ export default function SeleccionarHibrido(props: any) {
         <ToggleGroup
           type="single"
           defaultValue="center"
-          disabled={props.lote.id === 2}>
+          disabled={!isLoteIncluded(props.lote)}>
           <ToggleGroupItem value="a">Agresiva</ToggleGroupItem>
           <ToggleGroupItem value="b">Moderada</ToggleGroupItem>
           <ToggleGroupItem value="c">Conservadora</ToggleGroupItem>
@@ -93,9 +104,9 @@ export default function SeleccionarHibrido(props: any) {
                 <SelectItem value="a">
                   <div>Hibrido 1</div>
                 </SelectItem>
-                <SelectItem value="b" className="flex justify-between w-full">
-                  <span className="mr-auto">Hibrido 1</span>
-                  <Badge className="ml-auto">Comprado</Badge>
+                <SelectItem value="b" className="[&_span:last-child]:flex [&_span:last-child]:justify-between [&_span:last-child]:w-full">
+                  <span>Hibrido 1</span>
+                  <Badge className="ml-4">Comprado</Badge>
                 </SelectItem>
                 <SelectItem value="c">
                   <div>Hibrido 1</div>
@@ -107,7 +118,7 @@ export default function SeleccionarHibrido(props: any) {
             </SelectContent>
           </Select>
         </div>
-        <Checkbox id="checkbox" squared className="mb-auto mt-3 mr-3" />
+        <Checkbox id="checkbox" squared={true} className="mb-auto mt-3 mr-3" checked={isLoteIncluded(props.lote)} onCheckedChange={() => handleSelected('hibrido', props.lote)} />
       </div>
     </div>
   )

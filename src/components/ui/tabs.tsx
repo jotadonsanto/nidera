@@ -7,14 +7,20 @@ import { cn } from "@/lib/utils"
 
 const Tabs = TabsPrimitive.Root
 
+interface TabsListProps
+  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
+  withoutSeparation?: boolean
+}
+
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+  TabsListProps
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      "inline-flex gap-9 items-center justify-center bg-transparent p-0 text-muted-foreground rounded-none",
+      "inline-flex items-center justify-center bg-transparent p-0 text-muted-foreground rounded-none",
+      props.withoutSeparation ? "[&_button]:pr-8" : "gap-9",
       className
     )}
     {...props}

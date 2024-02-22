@@ -5,9 +5,9 @@ import Container from '@/components/layouts/Container';
 import LeftBar from '@/components/layouts/LeftBar';
 import RightBar from '@/components/layouts/RightBar';
 
-import SeleccionarCliente from '@/app/recomendacion/nueva/seleccionarCliente';
-import SeleccionarPropiedad from '@/app/recomendacion/nueva/seleccionarPropiedad';
-import SeleccionarLotes from '@/app/recomendacion/nueva/seleccionarLotes';
+import SeleccionarCliente from '@/app/recomendacion/lotes/seleccionarCliente';
+import SeleccionarPropiedad from '@/app/recomendacion/lotes/seleccionarPropiedad';
+import SeleccionarLotes from '@/app/recomendacion/lotes/seleccionarLotes';
 
 
 import Link from "next/link";
@@ -64,10 +64,10 @@ export default function Nueva() {
             <SeleccionarLotes handleChange={handleState} />
           }
           <div className="mt-auto">
-            <Link href="/recomendacion/nueva/parametros">
+            <Link href="/recomendacion/parametros">
               <Button className="w-full flex justify-between" disabled={isInvalid()} >
                 CONTINUAR
-                <FontAwesomeIcon icon={faArrowRight} className="text-primary-foreground" />
+                <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </Link>
           </div>

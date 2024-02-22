@@ -36,7 +36,7 @@ export default function SeleccionarCultivo(props: any) {
       <Checkbox
         className="ml-2"
         checked={selected === props.cultivo}
-        onCheckedChange={() => handleSelected('cultivo', props.cultivo)}/>
+        onCheckedChange={() => handleSelected('cultivo', props.cultivo)} />
     </div>
   )
 

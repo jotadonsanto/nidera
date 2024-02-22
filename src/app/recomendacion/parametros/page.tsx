@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Container from '@/components/layouts/Container';
 import MainSide from '@/components/layouts/MainSide';
@@ -10,14 +11,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight  } from '@fortawesome/free-solid-svg-icons';
 import { faLayerGroup, faLocationDot  } from '@fortawesome/free-solid-svg-icons';
 import { faFileLines } from '@fortawesome/free-regular-svg-icons';
-
-import SeleccionarCultivo from '@/app/recomendacion/nueva/parametros/seleccionarCultivo';
-import SeleccionarHibrido from '@/app/recomendacion/nueva/parametros/seleccionarHibrido';
-import { useState } from 'react';
+import type { Lote } from '@/app/recomendacion/recomendacion';
+import SeleccionarCultivo from '@/app/recomendacion/parametros/seleccionarCultivo';
+import SeleccionarHibrido from '@/app/recomendacion/parametros/seleccionarHibrido';
 
 export default function Parametros() {
   const [cultivo, setCultivo] = useState<string>('');
-  const [lotes, setLotes] = useState<[]>([])
+  const [hibrido, setHibrido] = useState<Lote[]>([])
 
   const handleState = (field: string, value: string | []) => {
     // having the field and value, dynamically run the set
@@ -25,15 +25,15 @@ export default function Parametros() {
   }
 
   const isInvalid = () => {
-    return !cultivo.length || !lotes.length;
+    return !cultivo.length || !hibrido.length;
   }
 
   return (
     <Container
       top={
         <div className='flex items-end justify-center pt-5 border-b'>
-          <Tabs value={'parametros'} className="w-[400px]">
-            <TabsList>
+          <Tabs value={'parametros'}>
+            <TabsList withoutSeparation>
               <TabsTrigger value="parametros">
                 <FontAwesomeIcon icon={faLocationDot} size={'lg'} className="mr-3" />
                 Clientes/Lotes
@@ -54,13 +54,13 @@ export default function Parametros() {
         <MainSide>
           <Breadcrumb>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/recomendacion/nueva">Fortezza SA</BreadcrumbLink>
+              <BreadcrumbLink href="/recomendacion/lotes">Fortezza SA</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/recomendacion/nueva">Propiedad</BreadcrumbLink>
+              <BreadcrumbLink href="/recomendacion/lotes">Propiedad</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/recomendacion/nueva">Lote 1, 2 y 3</BreadcrumbLink>
+              <BreadcrumbLink href="/recomendacion/lotes">Lote 1, 2 y 3</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
               <BreadcrumbLink>
@@ -69,12 +69,12 @@ export default function Parametros() {
             </BreadcrumbItem>
           </Breadcrumb>
           <SeleccionarCultivo handleChange={handleState} />
-          <SeleccionarHibrido />
+          <SeleccionarHibrido handleChange={handleState} />
           <div className="flex justify-end">
-            <Link href="/recomendacion/mis-recomendaciones">
+            <Link href="/tablero">
               <Button className="w-72 flex justify-between" disabled={isInvalid()} >
                 CREAR RECOMENDACIÓN
-                <FontAwesomeIcon icon={faArrowRight} className="text-primary-foreground" />
+                <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </Link>
           </div>

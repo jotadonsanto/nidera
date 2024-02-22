@@ -24,7 +24,7 @@ export default function SeleccionarLotes(props: any) {
       data-state={isSelected(props.lote.id) ? 'open' : 'closed'}
       key={props.lote.id}
       className={
-        "data-[state=open]:animate-in data-[state=open]:slide-in-from-left-10 data-[state=open]:sm:slide-in-from-left-10 " +
+        "data-[state=open]:animate-in data-[state=open]:fade-in-10 " +
         "rounded-lg shadow-sm hover:bg-gray-50/50 border p-4 " +
         (isSelected(props.lote.id) ? "border-green-600 border-2" : "border-gray-100")}>
       <div className="flex justify-between items-center">
@@ -35,12 +35,7 @@ export default function SeleccionarLotes(props: any) {
             </p>
             <Badge variant={'destructive'}>Enviado</Badge>
           </div>
-          {isSelected(props.lote.id) &&
-            <>
-              <p className="text-sm text-gray-500">5 Lotes</p>
-              <p className="text-sm text-gray-500">134 ha</p>
-            </>
-          }
+          <p className="text-sm text-gray-500">129,7 ha</p>
         </div>
         <div>
           <DropdownMenu>
@@ -62,7 +57,7 @@ export default function SeleccionarLotes(props: any) {
           </DropdownMenu>
           <Checkbox
             className="ml-2"
-            squared
+            squared={true}
             checked={isSelected(props.lote.id)}
             onCheckedChange={(value) => handleAdd(props.lote.id)} />
         </div>

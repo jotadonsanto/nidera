@@ -10,26 +10,28 @@ import { faEllipsisVertical  } from '@fortawesome/free-solid-svg-icons';
 const propiedades = [{ id: '1234' }, { id: '2345' }, { id: '3456' }, { id: '4567' }]
 
 export default function SeleccionarPropiedad(props: any) {
-  const [state, setState] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | null>(null);
   const handleCheck = (value:boolean, id: string) => {
-    setState(id);
+    setSelected(id);
     props.handleChange('propiedad', id);
   }
 
-  const isSelected = (id: string) => state === id;
+  const isSelected = (id: string) => selected === id;
+
+  const showDetails = (id: string) => isSelected(id) || selected === null;
 
   const PropiedadCard = (props: any) => (
     <div
       data-state={isSelected(props.propiedad.id) ? 'open' : 'closed'}
       key={props.propiedad.id}
       className={
-        "data-[state=open]:animate-in data-[state=open]:slide-in-from-left-10 data-[state=open]:sm:slide-in-from-left-10 " +
+        "data-[state=open]:animate-in data-[state=open]:fade-in-10 " +
         "rounded-lg shadow-sm hover:bg-gray-50/50 border p-4 " +
         (isSelected(props.propiedad.id) ? "border-green-600 border-2" : "border-gray-100")}>
       <div className="flex justify-between items-center">
         <div>
           <p className="text-sm font-bold">Nombre de la propiedad</p>
-          {isSelected(props.propiedad.id) &&
+          {showDetails(props.propiedad.id) &&
             <>
               <p className="text-sm text-gray-500">5 Lotes</p>
               <p className="text-sm text-gray-500">134 ha</p>
@@ -64,7 +66,7 @@ export default function SeleccionarPropiedad(props: any) {
   )
 
   return (
-    <div className="border-b flex flex-col min-h-0" style={{ flex: '1 1 0' }}>
+    <div className="border-b flex flex-col min-h-[200px]" style={{ flex: '1 1 0' }}>
       <div className="flex justify-between items-center mb-4">
         <Label>Seleccionar Propiedad {`[${propiedades.length}]`}</Label>
         <Button>

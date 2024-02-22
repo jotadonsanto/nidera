@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import RecomendacionesTable from '@/app/recomendacion/mis-recomendaciones/recomendacionesTable';
+import RecomendacionesTable from '@/app/tablero/recomendacionesTable';
 
 import { tableData } from '@/app/mockFile';
 import type { Recomendacion } from '@/app/recomendacion/recomendacion';
@@ -88,7 +88,7 @@ export default function Recomendaciones() {
               <FontAwesomeIcon icon={faUserCheck} size="1x" className="text-primary" />
               <h3 className="font-bold">Mis Recomendaciones</h3>
             </div>
-            <Link href="/recomendacion/nueva">
+            <Link href="/recomendacion/lotes">
               <Button variant="default">Crear Recomendación</Button>
             </Link>
           </div>
@@ -104,8 +104,9 @@ export default function Recomendaciones() {
                     <FormItem>
                       <FormControl>
                         <span className="flex items-center gap-2">
-                          <FontAwesomeIcon icon={faMagnifyingGlass} size="sm" className="text-primary" />
-                          <Input placeholder="shadcn" {...field} />
+                          <Input placeholder="Buscar" {...field}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} size="sm" className="text-primary" />
+                          </Input>
                         </span>
                       </FormControl>
                       <FormMessage />

@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(
-        "min-h-screen max-h-screen min-w-[1024px] bg-background antialiased flex flex-col",
+        "min-h-[700px] h-screen max-h-screen min-w-[1024px] bg-background antialiased flex flex-col",
         titillium.className
       )}>
         <Header />
