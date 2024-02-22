@@ -19,23 +19,27 @@ export default function Header() {
           width={71}
           height={40}
           alt="Picture of the author" />
-        <Button variant="link">
-          <Link href="/">&#60; Volver a Experiencia Nidera</Link>
-        </Button>
+        {url.includes('/recomendacion') &&
+          <Button variant="link">
+            <Link href="/tablero">&#60; Volver a Experiencia Nidera</Link>
+          </Button>
+        }
       </div>
-      <div className="self-end">
-        <Tabs value={url} className="w-[400px]">
-          <TabsList>
-            <TabsTrigger value="/">
-              <Link href="/">Dashboard</Link>
-            </TabsTrigger>
-            <TabsTrigger value="/tablero">
-              <Link href="/tablero">Mis Recomendaciones</Link>
-            </TabsTrigger>
-            <TabsTrigger value="/lotes">Mis Lotes</TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
+      {!url.includes('/recomendacion') &&
+        <div className="self-end">
+          <Tabs value={url} className="w-[400px]">
+            <TabsList>
+              <TabsTrigger value="/">
+                <Link href="/">Dashboard</Link>
+              </TabsTrigger>
+              <TabsTrigger value="/tablero">
+                <Link href="/tablero">Mis Recomendaciones</Link>
+              </TabsTrigger>
+              <TabsTrigger value="/lotes">Mis Lotes</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+      }
       <HeaderProfile name="Edgardo Gonzalez" />
     </header>
   );
