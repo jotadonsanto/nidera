@@ -15,7 +15,7 @@ import type { Lote } from '@/app/recomendacion/recomendacion';
 import SeleccionarCultivo from '@/app/recomendacion/parametros/seleccionarCultivo';
 import SeleccionarHibrido from '@/app/recomendacion/parametros/seleccionarHibrido';
 
-export default function Parametros() {
+export default function RecomendacionParametros() {
   const [cultivo, setCultivo] = useState<string>('');
   const [hibrido, setHibrido] = useState<Lote[]>([])
 

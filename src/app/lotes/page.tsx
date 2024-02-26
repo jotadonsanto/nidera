@@ -1,84 +1,57 @@
 "use client"
 
-import Link from 'next/link';
+import { useState } from 'react';
 import Container from '@/components/layouts/Container';
-import MainSide from '@/components/layouts/MainSide';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@/components/ui/breadcrumb';
-import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
+import LeftBar from '@/components/layouts/LeftBar';
+import RightBar from '@/components/layouts/RightBar';
+
+import SeleccionarCliente from '@/app/lotes/seleccionarCliente';
+import SeleccionarPropiedad from '@/app/lotes/seleccionarPropiedad';
+import SeleccionarLotes from '@/app/lotes/seleccionarLotes';
+
+
+import Link from "next/link";
+import { Button } from '@/components/ui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight  } from '@fortawesome/free-solid-svg-icons';
-import { faLayerGroup, faLocationDot  } from '@fortawesome/free-solid-svg-icons';
-import { faFileLines } from '@fortawesome/free-regular-svg-icons';
-
-import SeleccionarCultivo from '@/app/recomendacion/parametros/seleccionarCultivo';
-import SeleccionarHibrido from '@/app/recomendacion/parametros/seleccionarHibrido';
-import { useState } from 'react';
 
 export default function Lotes() {
-  const [cultivo, setCultivo] = useState<string>('');
-  const [lotes, setLotes] = useState<[]>([])
-
+  const [cliente, setCliente] = useState<string>("");
+  const [propiedad, setPropiedad] = useState<string>("");
+  const [lotes, setLotes] = useState<string[] | []>([]);
   const handleState = (field: string, value: string | []) => {
     // having the field and value, dynamically run the set
     eval('set' + field.charAt(0).toUpperCase() + field.slice(1) + "(value)");
   }
 
   const isInvalid = () => {
-    return !cultivo.length || !lotes.length;
+    return !cliente.length || !propiedad.length || !lotes.length;
   }
 
   return (
     <Container
-      top={
-        <div className='flex items-end justify-center pt-5 border-b'>
-          <Tabs value={'parametros'} className="w-[400px]">
-            <TabsList>
-              <TabsTrigger value="parametros">
-                <FontAwesomeIcon icon={faLocationDot} size={'lg'} className="mr-3" />
-                Clientes/Lotes
-              </TabsTrigger>
-              <TabsTrigger value="parametros">
-                <FontAwesomeIcon icon={faLayerGroup} size={'lg'} className="mr-3" />
-                Parámetros
-              </TabsTrigger>
-              <TabsTrigger value=''>
-                <FontAwesomeIcon icon={faFileLines} size={'lg'} className="mr-3" />
-                Recomendación
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-      }
-      main={
-        <MainSide>
-          <Breadcrumb>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/recomendacion/lotes">Fortezza SA</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/recomendacion/lotes">Propiedad</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/recomendacion/lotes">Lote 1, 2 y 3</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink>
-                Maíz
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <SeleccionarCultivo handleChange={handleState} />
-          <SeleccionarHibrido />
-          <div className="flex justify-end">
-            <Link href="/tablero">
-              <Button className="w-72 flex justify-between" disabled={isInvalid()} >
-                CREAR RECOMENDACIÓN
+      left={
+        <LeftBar>
+          <SeleccionarCliente handleChange={handleState} />
+          { cliente &&
+            <SeleccionarPropiedad handleChange={handleState} />
+          }
+          { propiedad &&
+            <SeleccionarLotes handleChange={handleState} />
+          }
+          <div className="mt-auto">
+            <Link href="/recomendacion/parametros">
+              <Button className="w-full flex justify-between" disabled={isInvalid()} >
+                CONTINUAR
                 <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </Link>
           </div>
-        </MainSide>
+        </LeftBar>
+      }
+      right={
+        <RightBar className="bg-green-200">
+        </RightBar>
       }
     />
   );

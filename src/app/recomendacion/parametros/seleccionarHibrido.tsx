@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -9,32 +10,41 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from "@/components/ui/select";
 import type { Lote } from '@/app/recomendacion/recomendacion';
 import { Badge } from "@/components/ui/badge";
+import { Loading } from '@/components/ui/loading';
 
 export default function SeleccionarHibrido(props: any) {
-  const lotes: Lote[] = [{
-    id: 1,
-    nombre: 'Nombre del lote',
-    riego: true,
-    estrategia: 'agresiva',
-    fecha: '',
-    hibrido: 'AJKH8AS61218A',
-  },
-  {
-    id: 2,
-    nombre: 'Nombre del lote',
-    riego: true,
-    estrategia: 'agresiva',
-    fecha: '',
-    hibrido: 'AJKHF8AS618A',
-  },
-  {
-    id: 3,
-    nombre: 'Nombre del lote',
-    riego: true,
-    estrategia: 'agresiva',
-    fecha: '',
-    hibrido: 'AJKH8AAS618A',
-  }];
+  const [loading, setLoading] = useState<boolean>(true);
+  const [lotes, setLotes] = useState<Lote[]>([]);
+  useEffect(()=>{
+    // faking API delay
+    setTimeout(() => {
+      setLotes([{
+        id: 1,
+        nombre: 'Nombre del lote',
+        riego: true,
+        estrategia: 'agresiva',
+        fecha: '',
+        hibrido: 'AJKH8AS61218A',
+      },
+      {
+        id: 2,
+        nombre: 'Nombre del lote',
+        riego: true,
+        estrategia: 'agresiva',
+        fecha: '',
+        hibrido: 'AJKHF8AS618A',
+      },
+      {
+        id: 3,
+        nombre: 'Nombre del lote',
+        riego: true,
+        estrategia: 'agresiva',
+        fecha: '',
+        hibrido: 'AJKH8AAS618A',
+      }]);
+      setLoading(false);
+    }, 1230);
+  },[])
 
   const [selected, setSelected] = useState<Lote[]>([])
 
@@ -124,28 +134,32 @@ export default function SeleccionarHibrido(props: any) {
   )
 
   return (
-    <div className="mt-9 mb-8">
+    <div className="flex flex-col mt-9 mb-8">
       <div className="flex justify-between items-center">
         <Label>Seleccionar híbrido y perfil productivo</Label>
         <Button>Agregar Lote</Button>
       </div>
-      <div className="flex mt-9 mb-2">
-        <div className="flex-1">
-          <Label className="pl-[250px]">Información general</Label>
+      { loading ? <Loading  className="self-center"/> :
+        <>
+        <div className="flex mt-9 mb-2">
+          <div className="flex-1">
+            <Label className="pl-[250px]">Información general</Label>
+          </div>
+          <div className="flex-1">
+            <Label className="pl-[20px]">Estrategia Productiva</Label>
+          </div>
+          <div className="flex-1">
+            <Label className="pl-[40px]">Fecha de siembra</Label>
+            <Label className="pl-[150px]">Híbrido</Label>
+          </div>
         </div>
-        <div className="flex-1">
-          <Label className="pl-[20px]">Estrategia Productiva</Label>
+        <div className="flex flex-col gap-4">
+          {lotes.map((lote) => (
+            <CultivoCard lote={lote} key={lote.id.toString()} />
+          ))}
         </div>
-        <div className="flex-1">
-          <Label className="pl-[40px]">Fecha de siembra</Label>
-          <Label className="pl-[150px]">Híbrido</Label>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4">
-        {lotes.map((lote) => (
-          <CultivoCard lote={lote} key={lote.id.toString()} />
-        ))}
-      </div>
+        </>
+      }
     </div>
   );
 }

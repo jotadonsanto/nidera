@@ -29,13 +29,21 @@ export default function Header() {
         <div className="self-end">
           <Tabs value={url} className="w-[400px]">
             <TabsList>
-              <TabsTrigger value="/">
-                <Link href="/">Dashboard</Link>
-              </TabsTrigger>
-              <TabsTrigger value="/tablero">
-                <Link href="/tablero">Mis Recomendaciones</Link>
-              </TabsTrigger>
-              <TabsTrigger value="/lotes">Mis Lotes</TabsTrigger>
+              <Link href="/">
+                <TabsTrigger value="/">
+                  Dashboard
+                </TabsTrigger>
+              </Link>
+              <Link href="/tablero">
+                <TabsTrigger value="/tablero">
+                  Mis Recomendaciones
+                </TabsTrigger>
+              </Link>
+              <Link href="/lotes">
+                <TabsTrigger value="/lotes">
+                  Mis Lotes
+                </TabsTrigger>
+              </Link>
             </TabsList>
           </Tabs>
         </div>

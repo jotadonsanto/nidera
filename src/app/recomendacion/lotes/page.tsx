@@ -18,7 +18,7 @@ import { faArrowRight  } from '@fortawesome/free-solid-svg-icons';
 import { faLayerGroup, faLocationDot  } from '@fortawesome/free-solid-svg-icons';
 import { faFileLines } from '@fortawesome/free-regular-svg-icons';
 
-export default function Nueva() {
+export default function RecomendacionLotes() {
   const [cliente, setCliente] = useState<string>("");
   const [propiedad, setPropiedad] = useState<string>("");
   const [lotes, setLotes] = useState<string[] | []>([]);

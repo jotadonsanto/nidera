@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem} from '@/components/ui/dropdown-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical  } from '@fortawesome/free-solid-svg-icons';
-import { Badge } from "@/components/ui/badge";
 import { Loading } from '@/components/ui/loading';
 
 export default function SeleccionarLotes(props: any) {
   const [loading, setLoading] = useState<boolean>(true);
   const [lotes, setLotes] = useState<any>([]);
+
   useEffect(()=>{
     // faking API delay
     setTimeout(() => {
@@ -19,30 +18,16 @@ export default function SeleccionarLotes(props: any) {
     }, 1230);
   },[])
 
-  const [state, setState] = useState<string[]>([]);
-  const handleAdd = (id: string) => {
-    const newState = [...state, id];
-    setState(newState);
-    props.handleChange('lotes', newState);
-  }
-
-  const isSelected = (id: string) => state.includes(id);
-
   const LotesCard = (props: { lote: { id: string} }) => (
     <div
-      data-state={isSelected(props.lote.id) ? 'open' : 'closed'}
       key={props.lote.id}
-      className={
-        "data-[state=open]:animate-in data-[state=open]:fade-in-10 " +
-        "rounded-lg shadow-sm hover:bg-gray-50/50 border p-4 " +
-        (isSelected(props.lote.id) ? "border-green-600 border-2" : "border-gray-100")}>
+      className="rounded-lg shadow-sm hover:bg-gray-50/50 border p-4">
       <div className="flex justify-between items-center">
         <div>
           <div className="flex gap-2">
             <p className="text-sm font-bold">
               Nombre del lote
             </p>
-            <Badge variant={'destructive'}>Enviado</Badge>
           </div>
           <p className="text-sm text-gray-500">129,7 ha</p>
         </div>
@@ -56,7 +41,7 @@ export default function SeleccionarLotes(props: any) {
             <DropdownMenuContent>
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  Editar (modal create/edit lote)
+                  Editar
                 </DropdownMenuItem>
                 <DropdownMenuItem className="text-red-500">
                   Borrar
@@ -64,11 +49,6 @@ export default function SeleccionarLotes(props: any) {
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Checkbox
-            className="ml-2"
-            squared={true}
-            checked={isSelected(props.lote.id)}
-            onCheckedChange={(value) => handleAdd(props.lote.id)} />
         </div>
       </div>
     </div>
