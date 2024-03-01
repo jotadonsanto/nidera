@@ -5,6 +5,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGro
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical  } from '@fortawesome/free-solid-svg-icons';
 import { Loading } from '@/components/ui/loading';
+import CrearLotes from '@/app/lotes/crearLotes';
 
 export default function SeleccionarLotes(props: any) {
   const [loading, setLoading] = useState<boolean>(true);
@@ -58,9 +59,7 @@ export default function SeleccionarLotes(props: any) {
     <div className="border-b flex flex-col min-h-0" style={{ flex: '2 1 0' }}>
       <div className="flex justify-between items-center mb-4">
         <Label>Seleccionar Lote {lotes.length > 0 && `[${lotes.length}]`}</Label>
-        <Button>
-          Crear Lote
-        </Button>
+        <CrearLotes />
       </div>
       { loading ? <Loading  className="self-center"/> :
         <div className="flex flex-col gap-2 overflow-scroll min-h-0">

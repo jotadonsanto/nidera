@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGro
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical  } from '@fortawesome/free-solid-svg-icons';
 import { Loading } from '@/components/ui/loading';
+import CrearPropiedades from '@/app/propiedades/crearPropiedades';
 
 export default function SeleccionarPropiedad(props: any) {
   const [loading, setLoading] = useState<boolean>(true);
@@ -80,6 +81,7 @@ export default function SeleccionarPropiedad(props: any) {
         <Button>
           Crear Propiedad
         </Button>
+        <CrearPropiedades />
       </div>
       { loading ? <Loading  className="self-center"/> :
         <div className="flex flex-col gap-2 overflow-scroll min-h-0">
