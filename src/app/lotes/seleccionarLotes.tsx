@@ -6,8 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical  } from '@fortawesome/free-solid-svg-icons';
 import { Loading } from '@/components/ui/loading';
 import CrearLotes from '@/app/lotes/crearLotes';
+import ConfirmDialog from '@/components/confirmDialog'
 
 export default function SeleccionarLotes(props: any) {
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [lotes, setLotes] = useState<any>([]);
 
@@ -44,7 +46,7 @@ export default function SeleccionarLotes(props: any) {
                 <DropdownMenuItem>
                   Editar
                 </DropdownMenuItem>
-                <DropdownMenuItem className="text-red-500">
+                <DropdownMenuItem className="text-red-500" onSelect={() => setShowDeleteModal(true)}>
                   Borrar
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -69,6 +71,16 @@ export default function SeleccionarLotes(props: any) {
             ))
           }
         </div>
+      }
+      {
+        showDeleteModal ? (
+          <ConfirmDialog
+            open={true}
+            title="Borrar {nombre del lote}?"
+            message="Está seguro que queres borrar {nombre del lote}? Esta acción es permanente."
+            handleCancel={() => setShowDeleteModal(false)}
+            handleConfirm={() => true} />
+        ) : null
       }
     </div>
   )

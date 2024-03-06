@@ -24,10 +24,6 @@ export default function Lotes() {
     eval('set' + field.charAt(0).toUpperCase() + field.slice(1) + "(value)");
   }
 
-  const isInvalid = () => {
-    return !cliente.length || !propiedad.length || !lotes.length;
-  }
-
   return (
     <Container
       left={
@@ -40,11 +36,8 @@ export default function Lotes() {
             <SeleccionarLotes handleChange={handleState} />
           }
           <div className="mt-auto">
-            <Link href="/recomendacion/parametros">
-              <Button className="w-full flex justify-between" disabled={isInvalid()} >
-                CONTINUAR
-                <FontAwesomeIcon icon={faArrowRight} />
-              </Button>
+            <Link href="/recomendacion/lotes">
+              <div className="text-sm text-center">¿Quéres realizar una recomendación? <span className="font-bold">COMENZAR</span></div>
             </Link>
           </div>
         </LeftBar>

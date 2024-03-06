@@ -6,9 +6,11 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGro
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical  } from '@fortawesome/free-solid-svg-icons';
 import { Loading } from '@/components/ui/loading';
+import ConfirmDialog from '@/components/confirmDialog';
 import CrearPropiedades from '@/app/propiedades/crearPropiedades';
 
 export default function SeleccionarPropiedad(props: any) {
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [propiedades, setPropiedades] = useState<any>([]);
   useEffect(()=>{
@@ -62,9 +64,9 @@ export default function SeleccionarPropiedad(props: any) {
             <DropdownMenuContent>
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  Editar (modal create/edit propiedad)
+                  Editar
                 </DropdownMenuItem>
-                <DropdownMenuItem className="text-red-500">
+                <DropdownMenuItem className="text-red-500" onSelect={() => setShowDeleteModal(true)}>
                   Borrar
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -93,6 +95,16 @@ export default function SeleccionarPropiedad(props: any) {
             ))
           }
         </div>
+      }
+      {
+        showDeleteModal ? (
+          <ConfirmDialog
+            open={true}
+            title="Borrar {nombre de la propiedad}?"
+            message="Está seguro que queres borrar {nombre de la propiedad}? Esta acción es permanente."
+            handleCancel={() => setShowDeleteModal(false)}
+            handleConfirm={() => true} />
+        ) : null
       }
     </div>
   )
