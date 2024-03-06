@@ -21,8 +21,13 @@ export default function SeleccionarPropiedad(props: any) {
 
   const [selected, setSelected] = useState<string | null>(null);
   const handleCheck = (value:boolean, id: string) => {
-    setSelected(id);
-    props.handleChange('propiedad', id);
+    if (selected === id) {
+      setSelected(null);
+      props.handleChange('propiedad', '');
+    } else {
+      setSelected(id);
+      props.handleChange('propiedad', id);
+    }
   }
 
   const isSelected = (id: string) => selected === id;

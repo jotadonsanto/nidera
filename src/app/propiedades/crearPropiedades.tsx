@@ -71,7 +71,7 @@ export default function crearPropiedades() {
               <InputFile onInput={(value) => console.log(value)}>Cargar KML</InputFile>
             </div>
           </div>
-          <div className="h-[450px] bg-green-200 py-4 px-10">
+          <div className="h-[30vh] min-h-[350px] bg-green-200 py-4 px-10">
             <Input className="w-1/2" placeholder="Buscar coordenadas" onInput={(value) => console.log(value)}>
               <FontAwesomeIcon icon={faMagnifyingGlass} size="sm" className="text-primary" />
             </Input>
