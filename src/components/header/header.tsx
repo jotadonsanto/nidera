@@ -21,7 +21,7 @@ export default function Header() {
           alt="Picture of the author" />
         {url.includes('/recomendacion') &&
           <Button variant="link">
-            <Link href="/tablero">&#60; Volver a Experiencia Nidera</Link>
+            <Link href="/tablero">&#60; Volver a Mis Recomendaciones</Link>
           </Button>
         }
       </div>

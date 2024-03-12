@@ -1,7 +1,7 @@
-import Image from "next/image";
+import { useState } from 'react';;
 import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass, faCheckCircle, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { InputFile } from "@/components/ui/input-file";
@@ -16,7 +16,12 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "@/components/ui/use-toast";
 
-export default function crearLotes() {
+export default function CrearLotes() {
+  const [lote, setLote] = useState<string>('');
+
+  const isInvalid = () => {
+    return !lote.length;
+  }
 
   function errorToast() {
     toast({
@@ -58,17 +63,20 @@ export default function crearLotes() {
         </DialogHeader>
         <div>
           <div className="flex gap-4 py-4 px-10">
-            <div className="flex flex-1 flex-col gap-2">
+            <div className="flex flex-1 flex-col justify-between gap-2">
               <Label>Nombre de la propiedad</Label>
-              <Input placeholder="Seleccionar" onInput={(value) => console.log(value)} />
+              <p className="mb-1 text-lg">Nombre de la Propiedad</p>
             </div>
             <div className="flex flex-1 flex-col gap-2">
               <Label>Nombre del lote</Label>
-              <Input placeholder="Seleccionar" onInput={(value) => console.log(value)} />
+              <Input placeholder="Seleccionar" onInput={(event) => setLote(event.target.value)} />
             </div>
             <div className="flex flex-1 flex-col gap-2">
               <Label>* Formato para subir KMZ</Label>
-              <InputFile onInput={(value) => console.log(value)}>Cargar KML</InputFile>
+              <InputFile onInput={(value) => console.log(value)}>
+                <FontAwesomeIcon icon={faUpload} className="mr-2" />
+                Cargar KML
+              </InputFile>
             </div>
           </div>
           <div className="h-[30vh] min-h-[350px] bg-green-200 py-4 px-10">
@@ -79,7 +87,7 @@ export default function crearLotes() {
         </div>
         <DialogFooter>
           <Button variant={'secondary'} onClick={errorToast}>Cancelar</Button>
-          <Button onClick={successToast}>Guardar Lote</Button>
+          <Button onClick={successToast} disabled={isInvalid()}>Guardar Lote</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

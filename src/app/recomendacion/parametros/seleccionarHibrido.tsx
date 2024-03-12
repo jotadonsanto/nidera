@@ -71,7 +71,7 @@ export default function SeleccionarHibrido(props: any) {
         <div className="flex flex-col gap-2">
           <span className="font-semibold">{props.lote.nombre}</span>
           <div className="flex items-center gap-2">
-            <Checkbox id="check" squared={true} />
+            <Checkbox id="check" squared={true} disabled={!isLoteIncluded(props.lote)} />
             <label
               htmlFor="check"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -92,7 +92,7 @@ export default function SeleccionarHibrido(props: any) {
       </div>
       <div className="flex flex-1 items-center justify-stretch gap-2 pl-5">
         <div className="flex flex-1 gap-2">
-          <Select onValueChange={() => {}}>
+          <Select onValueChange={() => {}} disabled={!isLoteIncluded(props.lote)}>
             <SelectTrigger>
               <SelectValue placeholder="Fecha de siembra" />
             </SelectTrigger>
@@ -104,7 +104,7 @@ export default function SeleccionarHibrido(props: any) {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <Select onValueChange={() => {}}>
+          <Select onValueChange={() => {}} disabled={!isLoteIncluded(props.lote)}>
             <SelectTrigger>
               <SelectValue placeholder="Híbrido" />
             </SelectTrigger>
