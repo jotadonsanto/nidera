@@ -68,15 +68,15 @@ export default function CrearPropiedades() {
           <div className="flex gap-4 py-4 px-10">
             <div className="flex flex-1 flex-col gap-2">
               <Label>Nombre de la propiedad</Label>
-              <Input placeholder="Seleccionar" onInput={(event) => setPropiedad(event.target.value)} />
+              <Input placeholder="Seleccionar" onInput={(event) => setPropiedad((event.target as HTMLTextAreaElement).value)} />
             </div>
             <div className="flex flex-1 flex-col gap-2">
               <Label>Nombre del lote</Label>
-              <Input placeholder="Seleccionar" onInput={(event) => setLote(event.target.value)} />
+              <Input placeholder="Seleccionar" onInput={(event) => setLote((event.target as HTMLTextAreaElement).value)} />
             </div>
             <div className="flex flex-1 flex-col gap-2">
               <Label>* Formato para subir KMZ</Label>
-              <InputFile onInput={(event) => console.log(event.target.value)}>
+              <InputFile onInput={(event) => console.log((event.target as HTMLTextAreaElement).value)}>
                 <FontAwesomeIcon icon={faUpload} className="mr-2" />
                 Cargar KML
               </InputFile>
