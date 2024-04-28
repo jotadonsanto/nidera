@@ -111,7 +111,7 @@ export default function DataTable({ list, loading }: { list: Recomendacion[], lo
                             <TableCell className="border-b" colSpan={1}>-</TableCell>
                             <TableCell className="border-b text-right">
                               <Button variant="default" size="sm">
-                                Enviar seguimiento a Nidera
+                                Enviar seguimiento a Asista
                               </Button>
                             </TableCell>
                             <TableCell className="border-b text-center" colSpan={2}>

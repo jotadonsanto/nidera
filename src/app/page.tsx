@@ -197,7 +197,7 @@ export default function Home() {
                                     <TableCell colSpan={1}>-</TableCell>
                                     <TableCell className="text-right">
                                       <Button variant="default" size="sm">
-                                        Enviar seguimiento a Nidera
+                                        Enviar seguimiento a Asista
                                       </Button>
                                     </TableCell>
                                     <TableCell className="text-right">

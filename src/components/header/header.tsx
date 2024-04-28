@@ -16,9 +16,9 @@ export default function Header() {
       <div className="flex gap-10">
         <Image
           src="/logo.svg"
-          width={71}
-          height={40}
-          alt="Picture of the author" />
+          width={82}
+          height={47}
+          alt="Asista" />
         {url.includes('/recomendacion') &&
           <Button variant="link">
             <Link href="/tablero">&#60; Volver a Mis Recomendaciones</Link>
