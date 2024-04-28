@@ -1,4 +1,6 @@
-const tableData = [
+import type { Recomendacion } from '@/app/recomendacion/recomendacion';
+
+const tableData: Recomendacion[] = [
   {
     id: 1,
     cliente: 'Fortalezza SA',
@@ -6,7 +8,7 @@ const tableData = [
     cantidad: 12,
     distribuidor: 'Nombre del Distribuidor',
     cultivo: 'Girasol',
-    estado: 'processing',
+    estado: 'error',
     creado: 'Rosmualdo Loaizaga',
     sembrado: true,
     lotes: [

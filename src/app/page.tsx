@@ -59,6 +59,8 @@ const recomendacionStatus = (status: string) => {
       return <Badge variant="outline">Descargado</Badge>
     case 'sent':
       return <Badge variant="destructive">Resultados disponibles</Badge>
+    case 'error':
+      return <Badge variant="error">Error</Badge>
     default:
       return <div>-</div>;
   }

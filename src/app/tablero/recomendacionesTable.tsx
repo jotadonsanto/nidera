@@ -16,7 +16,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Loading } from '@/components/ui/loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck, faChevronDown  } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck, faChevronDown, faExclamationCircle  } from '@fortawesome/free-solid-svg-icons';
 
 import type { Recomendacion, Lote } from '@/app/recomendacion/recomendacion';
 
@@ -25,11 +25,13 @@ const recomendacionStatus = (status: Recomendacion["estado"]) => {
     case 'processing':
       return <Badge variant="default">Procesando</Badge>
     case 'results_available':
-      return <Badge variant="secondary">Resultados disponibles</Badge>
+      return <Badge variant="destructive">Resultados disponibles</Badge>
     case 'downloaded':
       return <Badge variant="outline">Descargado</Badge>
     case 'sent':
-      return <Badge variant="destructive">Resultados disponibles</Badge>
+      return <Badge variant="secondary">Enviado</Badge>
+    case 'error':
+      return <Badge variant="error">Revision <FontAwesomeIcon icon={faExclamationCircle} className="ml-2" /></Badge>
     default:
       return <div>-</div>;
   }
