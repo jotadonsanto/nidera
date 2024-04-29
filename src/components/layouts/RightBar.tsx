@@ -4,7 +4,7 @@ export default function RightBar({ className, children }: { className?: string, 
   return (
     <div
     className={cn(
-      "flex-1",
+      "flex-1 flex flex-col h-100",
       className
     )}>
       <>{ children }</>

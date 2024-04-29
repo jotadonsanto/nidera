@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -65,7 +66,11 @@ export default function DataTable({ list, loading }: { list: Recomendacion[], lo
               <CollapsibleTrigger asChild type={undefined} className={recomendacion.lotes?.length ? 'cursor-pointer' : ''}>
                 <TableRow className="rounded-lg shadow-md">
                     <TableCell>{recomendacion.id.toString()}</TableCell>
-                    <TableCell>{recomendacion.cliente}</TableCell>
+                    <TableCell>
+                      <Link href={`/recomendacion/${recomendacion.id.toString()}`}>
+                        {recomendacion.cliente}
+                      </Link>
+                    </TableCell>
                     <TableCell>{recomendacion.propiedad}</TableCell>
                     <TableCell>{recomendacion.cantidad.toString()}</TableCell>
                     <TableCell>{recomendacion.distribuidor}</TableCell>
