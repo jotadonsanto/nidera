@@ -21,7 +21,7 @@ type Lote = {
   sembrado?: boolean,
   riego?: boolean,
   indice?: string,
-  bolsas_totales: string,
+  bolsas_totales?: string,
 }
 
 export type {
