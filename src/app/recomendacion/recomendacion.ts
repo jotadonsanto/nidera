@@ -20,6 +20,8 @@ type Lote = {
   estrategia?: string,
   sembrado?: boolean,
   riego?: boolean,
+  indice?: string,
+  bolsas_totales: string,
 }
 
 export type {

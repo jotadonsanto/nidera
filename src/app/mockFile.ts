@@ -14,26 +14,32 @@ const tableData: Recomendacion[] = [
     lotes: [
       {
         id: 106,
-        nombre: 'Nombre del lote',
+        nombre: 'Nombres Lots Uysi',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       },
       {
         id: 107,
-        nombre: 'Nombre del lote',
+        nombre: 'Lote Sjuyhjolip 76',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       },
       {
         id: 108,
-        nombre: 'Nombre del lote',
+        nombre: 'Lotes tium 87',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       }
     ]
@@ -62,11 +68,12 @@ const tableData: Recomendacion[] = [
     lotes: [
       {
         id: 100,
-        nombre: 'Nombre del lote',
+        nombre: 'Tevasco Nesto',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       },
       {
@@ -75,16 +82,18 @@ const tableData: Recomendacion[] = [
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       },
       {
         id: 102,
-        nombre: 'Nombre del lote',
+        nombre: 'Tevasco Nesto',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       }
     ]
@@ -102,11 +111,12 @@ const tableData: Recomendacion[] = [
     lotes: [
       {
         id: 103,
-        nombre: 'Nombre del lote',
+        nombre: 'Defura Pol Fam',
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       },
       {
@@ -115,7 +125,8 @@ const tableData: Recomendacion[] = [
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       },
       {
@@ -124,7 +135,8 @@ const tableData: Recomendacion[] = [
         fecha: '24/12/12',
         hibrido: 'NSAO234BOWEQ234BKJSD1',
         superficie: '3000 ha',
-        hibrido: 'NSAO234BOWEQ234BKJSD1',
+        indice: '18912',
+        bolsas_totales: '87',
         sembrado: true,
       }
     ]
@@ -197,6 +209,91 @@ const tableData: Recomendacion[] = [
   },
 ]
 
+const recomendacionSummary: Recomendacion = {
+  id: 1,
+  cliente: 'Fortalezza SA',
+  propiedad: 'San Martin',
+  cantidad: 12,
+  distribuidor: 'Nombre del Distribuidor',
+  cultivo: 'Girasol',
+  estado: 'error',
+  creado: 'Rosmualdo Loaizaga',
+  sembrado: true,
+  lotes: [
+    {
+      id: 106,
+      nombre: 'Nombres Lots Uysi',
+      fecha: '24/12/12',
+      hibrido: 'NSAO234BOWEQ234BKJSD1',
+      superficie: '3000 ha',
+      indice: '18912',
+      bolsas_totales: '87',
+      sembrado: true,
+    },
+    {
+      id: 107,
+      nombre: 'Lote Sjuyhjolip 76',
+      fecha: '24/12/12',
+      hibrido: 'NSAO234BOWEQ234BKJSD1',
+      superficie: '3000 ha',
+      indice: '18912',
+      bolsas_totales: '87',
+      sembrado: true,
+    },
+    {
+      id: 108,
+      nombre: 'Lotes tium 87',
+      fecha: '24/12/12',
+      hibrido: 'NSAO234BOWEQ234BKJSD1',
+      superficie: '3000 ha',
+      indice: '18912',
+      bolsas_totales: '87',
+      sembrado: true,
+    },
+    {
+      id: 106,
+      nombre: 'Nombres Lots Uysi',
+      fecha: '24/12/12',
+      hibrido: 'NSAO234BOWEQ234BKJSD1',
+      superficie: '3000 ha',
+      indice: '18912',
+      bolsas_totales: '87',
+      sembrado: true,
+    },
+    {
+      id: 107,
+      nombre: 'Lote Sjuyhjolip 76',
+      fecha: '24/12/12',
+      hibrido: 'NSAO234BOWEQ234BKJSD1',
+      superficie: '3000 ha',
+      indice: '18912',
+      bolsas_totales: '87',
+      sembrado: true,
+    },
+    {
+      id: 106,
+      nombre: 'Nombres Lots Uysi',
+      fecha: '24/12/12',
+      hibrido: 'NSAO234BOWEQ234BKJSD1',
+      superficie: '3000 ha',
+      indice: '18912',
+      bolsas_totales: '87',
+      sembrado: true,
+    },
+    {
+      id: 107,
+      nombre: 'Lote Sjuyhjolip 76',
+      fecha: '24/12/12',
+      hibrido: 'NSAO234BOWEQ234BKJSD1',
+      superficie: '3000 ha',
+      indice: '18912',
+      bolsas_totales: '87',
+      sembrado: true,
+    },
+  ]
+}
+
 export {
-  tableData
+  tableData,
+  recomendacionSummary
 };
