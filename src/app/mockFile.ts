@@ -209,7 +209,7 @@ const tableData: Recomendacion[] = [
   },
 ]
 
-const recomendacionSummary: Recomendacion = {
+const fakeRecomendacion: Recomendacion = {
   id: 1,
   cliente: 'Fortalezza SA',
   propiedad: 'San Martin',
@@ -295,5 +295,5 @@ const recomendacionSummary: Recomendacion = {
 
 export {
   tableData,
-  recomendacionSummary
+  fakeRecomendacion
 };
