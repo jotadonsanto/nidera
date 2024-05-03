@@ -1,8 +1,8 @@
 type Recomendacion = {
-  id: Number,
+  id: number,
   cliente: string,
   propiedad: string,
-  cantidad: Number,
+  cantidad: number,
   distribuidor: string,
   cultivo: string,
   estado: string,
@@ -12,7 +12,7 @@ type Recomendacion = {
 }
 
 type Lote = {
-  id: Number,
+  id: number,
   nombre: string,
   fecha: string,
   hibrido: string,
