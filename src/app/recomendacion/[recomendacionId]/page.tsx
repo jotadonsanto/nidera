@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Container from '@/components/layouts/Container';
 import LeftBar from '@/components/layouts/LeftBar';
 import RightBar from '@/components/layouts/RightBar';
-import RecomendacionTopNav from '@/app/recomendacion/[recomendacionId]/cardumen';
+import RecomendacionTopNav from '@/app/recomendacion/[recomendacionId]/recomendacionTopnav';
 import RecomendacionSidenav from '@/app/recomendacion/[recomendacionId]/recomendacionSidenav';
 import RecomendacionResumen from '@/app/recomendacion/[recomendacionId]/recomendacionResumen';
 import RecomendacionLote from '@/app/recomendacion/[recomendacionId]/recomendacionLote';
