@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import Container from '@/components/layouts/Container';
 import LeftBar from '@/components/layouts/LeftBar';
 import RightBar from '@/components/layouts/RightBar';
-import RecomendacionTopNav from '@/app/recomendacion/[recomendacionId]/recomendacionTopNav';
+import RecomendacionTopNav from '@/app/recomendacion/[recomendacionId]/recomendacionTopnav';
 import RecomendacionSidenav from '@/app/recomendacion/[recomendacionId]/recomendacionSidenav';
 import RecomendacionResumen from '@/app/recomendacion/[recomendacionId]/recomendacionResumen';
+import RecomendacionLote from '@/app/recomendacion/[recomendacionId]/recomendacionLote';
 import { Loading } from '@/components/ui/loading';
 
 import type { Recomendacion } from '@/app/recomendacion/recomendacion';
@@ -22,33 +23,39 @@ export default function RecomendacionLotes({ params }: {
     // faking API delay
     setTimeout(() => {
       setData(fakeRecomendacion);
+      setSection('general');
       setLoading(false);
     }, 1000);
   },[])
 
+
   const [view, setView] = useState<string>('summary');
-  const changeContent = (chosenView: any) => {
-    setView(chosenView);
-  };
+  const changeView = (view: string) => {
+    setView(view);
+  }
+
+  const [section, setSection] = useState<'general' | 'fenologia' | 'perfil'>();
+  const changeSection = (section: 'general' | 'fenologia' | 'perfil') => {
+    setSection(section);
+  }
 
   return (
     <Container
       top={
-        loading ? <Loading  className="self-center"/> :
-        <RecomendacionTopNav lote={{id: params.recomendacionId}} />
+        <RecomendacionTopNav lote={{id: params.recomendacionId}} handleChange={changeView} view={view} loading={loading} />
       }
 
       left={
         <LeftBar size="sm">
-          { loading ? <Loading  className="self-center"/> :
-          <RecomendacionSidenav handleChange={changeContent} /> }
+          <RecomendacionSidenav handleChange={changeSection} section={section} disabled={view === 'summary'} />
         </LeftBar>
       }
 
       right={
         <RightBar>
           { loading ? <Loading  className="self-center"/> :
-            <RecomendacionResumen recomendacionId={params.recomendacionId} />
+          view === 'summary' ? <RecomendacionResumen recomendacionId={params.recomendacionId} /> :
+            <RecomendacionLote />
           }
         </RightBar>
       }
