@@ -1,22 +1,15 @@
 'use client';
 
-import InformacionGeneral from "@/app/recomendacion/[recomendacionId]/general/InformacionGeneral";
-import AmbientacionGeneral from "@/app/recomendacion/[recomendacionId]/general/AmbientacionGeneral";
-import TablaGeneral from "@/app/recomendacion/[recomendacionId]/general/TablaGeneral";
+import RecomendacionGeneral from "@/app/recomendacion/[recomendacionId]/general/recomendacionGeneral";
+import RecomendacionFenologia from "@/app/recomendacion/[recomendacionId]/fenologia/recomendacionFenologia";
+import RecomendacionPerfil from "@/app/recomendacion/[recomendacionId]/perfil/recomendacionPerfil";
 
-export default function RecomendacionLote() {
+export default function RecomendacionLote(props: {selectedSection: 'general' | 'fenologia' | 'perfil' | undefined}) {
   return (
-    <div className="flex flex-col">
-      <div className="p-10 flex gap-8">
-        <InformacionGeneral className="w-[380px] h-[500px]" />
-        <AmbientacionGeneral className="flex-1" />
-      </div>
-
-      <hr />
-
-      <div className="p-10">
-        <TablaGeneral className="flex-1" />
-      </div>
-    </div>
+    <>
+      {props.selectedSection === 'general' && <RecomendacionGeneral />}
+      {props.selectedSection === 'fenologia' && <RecomendacionFenologia />}
+      {props.selectedSection === 'perfil' && <RecomendacionPerfil />}
+    </>
   )
 }

@@ -1,5 +1,7 @@
 "use client"
 
+import { redirect } from 'next/navigation';
+
 // Form libraries.
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -68,6 +70,7 @@ const recomendacionStatus = (status: string) => {
 
 
 export default function Home() {
+  redirect('/tablero');
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {

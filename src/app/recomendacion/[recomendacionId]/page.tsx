@@ -10,7 +10,7 @@ import RecomendacionResumen from '@/app/recomendacion/[recomendacionId]/recomend
 import RecomendacionLote from '@/app/recomendacion/[recomendacionId]/recomendacionLote';
 import { Loading } from '@/components/ui/loading';
 
-import type { Recomendacion } from '@/app/recomendacion/recomendacion';
+import type { Recomendacion, Lote } from '@/app/recomendacion/recomendacion';
 import { fakeRecomendacion } from '@/app/mockFile';
 
 export default function RecomendacionLotes({ params }: {
@@ -20,42 +20,46 @@ export default function RecomendacionLotes({ params }: {
   const [data, setData] = useState<Recomendacion>();
 
   useEffect(()=>{
+    setSelectedSection('general');
     // faking API delay
     setTimeout(() => {
+      // do request..
       setData(fakeRecomendacion);
-      setSection('general');
+      const getLotes: Lote[] | undefined = fakeRecomendacion.lotes;
+      setViews(getLotes);
+      setSelectedView(getLotes && getLotes.length > 1 ? 'summary' : getLotes![0].id);
       setLoading(false);
     }, 1000);
   },[])
 
-
-  const [view, setView] = useState<string>('summary');
-  const changeView = (view: string) => {
-    setView(view);
+  const [views, setViews] = useState<any[]>();
+  const [selectedView, setSelectedView] = useState<number | string>();
+  const changeView = (view: number | string) => {
+    setSelectedView(view);
   }
 
-  const [section, setSection] = useState<'general' | 'fenologia' | 'perfil'>();
+  const [selectedSection, setSelectedSection] = useState<'general' | 'fenologia' | 'perfil'>();
   const changeSection = (section: 'general' | 'fenologia' | 'perfil') => {
-    setSection(section);
+    setSelectedSection(section);
   }
 
   return (
     <Container
       top={
-        <RecomendacionTopNav lote={{id: params.recomendacionId}} handleChange={changeView} view={view} loading={loading} />
+        <RecomendacionTopNav handleChange={changeView} selectedView={selectedView} views={views} loading={loading} />
       }
 
       left={
         <LeftBar size="sm">
-          <RecomendacionSidenav handleChange={changeSection} section={section} disabled={view === 'summary'} />
+          <RecomendacionSidenav handleChange={changeSection} selectedSection={selectedSection} disabled={selectedView === 'summary'} />
         </LeftBar>
       }
 
       right={
         <RightBar>
           { loading ? <Loading  className="self-center"/> :
-          view === 'summary' ? <RecomendacionResumen recomendacionId={params.recomendacionId} /> :
-            <RecomendacionLote />
+            selectedView === 'summary' ? <RecomendacionResumen recomendacionId={params.recomendacionId} /> :
+            <RecomendacionLote selectedSection={selectedSection} />
           }
         </RightBar>
       }

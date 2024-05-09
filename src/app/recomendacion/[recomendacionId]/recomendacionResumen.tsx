@@ -12,7 +12,6 @@ import { fakeRecomendacion } from '@/app/mockFile';
 
 export default function RecomendacionResumen(props: { recomendacionId: number }) {
   const [view, setView] = useState('list');
-  const changeContent = (value: any) => { console.log(value) };
 
   const CultivoCard = (props: { cultivo: string }) => (
     <div
@@ -52,7 +51,7 @@ export default function RecomendacionResumen(props: { recomendacionId: number })
   return (
     <div className="flex flex-col">
       <div className="p-10">
-        <CultivoCard cultivo={props.recomendacionId > 12 ? "girasol" : "maíz"} />
+        <CultivoCard cultivo={props.recomendacionId > 5 ? "girasol" : "maíz"} />
       </div>
 
       <hr />
@@ -60,10 +59,10 @@ export default function RecomendacionResumen(props: { recomendacionId: number })
       {/* Cards and List view of Lotes */}
       <div className="p-10">
         <div className="flex justify-end gap-4 mb-4">
-          <Button variant={view === 'list' ? 'default' : 'link'} size={'icon'} onClick={() => setView('list')}>
+          <Button variant={view === 'list' ? 'default' : 'link'} size={'sm'} onClick={() => setView('list')}>
             <FontAwesomeIcon icon={faListDots} />
           </Button>
-          <Button variant={view !== 'list' ? 'default' : 'link'} size={'icon'} onClick={() => setView('grid')}>
+          <Button variant={view !== 'list' ? 'default' : 'link'} size={'sm'} onClick={() => setView('grid')}>
             <FontAwesomeIcon icon={faThLarge} />
           </Button>
         </div>
