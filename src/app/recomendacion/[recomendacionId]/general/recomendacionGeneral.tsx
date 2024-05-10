@@ -4,17 +4,12 @@ import TablaGeneral from "@/app/recomendacion/[recomendacionId]/general/TablaGen
 
 export default function RecomendacionGeneral(props: any) {
   return (
-    <div className="flex flex-col">
-      <div className="p-10 flex gap-8">
+    <div className="flex flex-col p-10 gap-10">
+      <div className="flex gap-8">
         <InformacionGeneral className="w-[390px] h-[500px]" />
         <AmbientacionGeneral className="flex-1" />
       </div>
-
-      <hr />
-
-      <div className="p-10">
-        <TablaGeneral className="flex-1" />
-      </div>
+      <TablaGeneral className="flex-1" />
     </div>
   )
 }

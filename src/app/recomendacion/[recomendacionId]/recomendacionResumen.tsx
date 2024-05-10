@@ -49,15 +49,11 @@ export default function RecomendacionResumen(props: { recomendacionId: number })
   )
 
   return (
-    <div className="flex flex-col">
-      <div className="p-10">
-        <CultivoCard cultivo={props.recomendacionId > 5 ? "girasol" : "maíz"} />
-      </div>
-
-      <hr />
+    <div className="flex flex-col p-10 gap-10">
+      <CultivoCard cultivo={props.recomendacionId > 5 ? "girasol" : "maíz"} />
 
       {/* Cards and List view of Lotes */}
-      <div className="p-10">
+      <div>
         <div className="flex justify-end gap-4 mb-4">
           <Button variant={view === 'list' ? 'default' : 'link'} size={'sm'} onClick={() => setView('list')}>
             <FontAwesomeIcon icon={faListDots} />
@@ -72,27 +68,27 @@ export default function RecomendacionResumen(props: { recomendacionId: number })
         <div className="flex flex-col text-sm">
           {/* Header of list */}
           <div className="flex bg-gray-50 p-3 rounded-lg">
-            <div className="w-[10%] italic"></div>
-            <div className="w-[18%] italic">Lote</div>
-            <div className="w-[18%] italic">Fecha de Siembra<br/>Optima</div>
-            <div className="w-[18%] italic">Indice Ambiental<br/>(kg/ha)</div>
-            <div className="w-[23%] italic">Hibrido</div>
-            <div className="w-[13%] italic">Bolsas Totales - Fija<br/>(180.000 sem/bolsa)</div>
+            <div className="w-[5%]"></div>
+            <div className="w-[20%] text-center italic self-center">Lote</div>
+            <div className="w-[20%] text-center italic self-center">Fecha de Siembra Optima</div>
+            <div className="w-[20%] text-center italic self-center">Indice Ambiental (kg/ha)</div>
+            <div className="w-[15%] text-center italic self-center">Hibrido</div>
+            <div className="w-[20%] text-center italic self-center">Bolsas Totales - Fija<br/>(180.000 sem/bolsa)</div>
           </div>
           {fakeRecomendacion.lotes && fakeRecomendacion.lotes.map((lote: Lote, id) => (
             <div key={id} className="flex border p-4 mt-2 rounded-lg shadow-md">
-              <div className="w-[10%]">
+              <div className="w-[5%]">
                 <Image
                   src={`/girasol.svg`}
                   width={33}
                   height={31}
                   alt="Picture of the author" />
               </div>
-              <div className="w-[18%] flex items-center">{lote.nombre}</div>
-              <div className="w-[18%] flex items-center">{lote.fecha}</div>
-              <div className="w-[18%] flex items-center">{lote.indice}</div>
-              <div className="w-[23%] flex items-center">{lote.hibrido}</div>
-              <div className="w-[13%] flex items-center">{lote.bolsas_totales}</div>
+              <div className="w-[20%] flex justify-center items-center font-bold">{lote.nombre}</div>
+              <div className="w-[20%] flex justify-center items-center">{lote.fecha}</div>
+              <div className="w-[20%] flex justify-center items-center">{lote.indice}</div>
+              <div className="w-[15%] flex justify-center items-center">{lote.hibrido}</div>
+              <div className="w-[20%] flex justify-center items-center">{lote.bolsas_totales}</div>
             </div>
           ))}
         </div>

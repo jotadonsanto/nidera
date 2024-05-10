@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -39,6 +40,8 @@ const recomendacionStatus = (status: Recomendacion["estado"]) => {
 }
 
 export default function DataTable({ list, loading }: { list: Recomendacion[], loading: boolean }) {
+  const router = useRouter()
+
   return (
     <Table className="px-1">
       {loading && <TableCaption><Loading /></TableCaption>}
@@ -63,33 +66,40 @@ export default function DataTable({ list, loading }: { list: Recomendacion[], lo
           <Collapsible key={recomendacion.id.toString()} asChild>
             <>
               {/* Cada fila principal iterada */}
-              <CollapsibleTrigger asChild type={undefined} className={recomendacion.lotes?.length ? 'cursor-pointer' : ''}>
-                <TableRow className="rounded-lg shadow-md">
-                    <TableCell>{recomendacion.id.toString()}</TableCell>
-                    <TableCell>
-                      <Link href={`/recomendacion/${recomendacion.id.toString()}`}>
-                        {recomendacion.cliente}
-                      </Link>
-                    </TableCell>
-                    <TableCell>{recomendacion.propiedad}</TableCell>
-                    <TableCell>{recomendacion.cantidad.toString()}</TableCell>
-                    <TableCell>{recomendacion.distribuidor}</TableCell>
-                    <TableCell>{recomendacion.cultivo}</TableCell>
-                    <TableCell>
-                      { recomendacionStatus(recomendacion.estado) }
-                    </TableCell>
-                    <TableCell>{recomendacion.creado}</TableCell>
-                    <TableCell className="text-right">
-                      {recomendacion.sembrado &&
-                        <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
-                      }
-                    </TableCell>
-                    <TableCell className="text-center">
-                      <FontAwesomeIcon icon={faChevronDown} size="sm" className="text-gray-500 mr-2" />
-                    </TableCell>
-                </TableRow>
-              </CollapsibleTrigger>
-
+              <TableRow className="rounded-lg shadow-md cursor-pointer">
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>
+                  {recomendacion.id.toString()}
+                </TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>
+                  {recomendacion.cliente}
+                </TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>
+                  {recomendacion.propiedad}
+                </TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>
+                  {recomendacion.cantidad.toString()}
+                </TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>
+                  {recomendacion.distribuidor}
+                </TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>
+                  {recomendacion.cultivo}
+                </TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>
+                  { recomendacionStatus(recomendacion.estado) }
+                </TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)}>{recomendacion.creado}</TableCell>
+                <TableCell onClick={() => router.push(`/recomendacion/${recomendacion.id.toString()}`)} className="text-right">
+                  {recomendacion.sembrado &&
+                    <FontAwesomeIcon icon={faCircleCheck} size="lg" className="text-green-600 mr-2" />
+                  }
+                </TableCell>
+                <CollapsibleTrigger asChild type={undefined} className={recomendacion.lotes?.length ? 'cursor-pointer' : ''}>
+                  <TableCell className="text-center">
+                    <FontAwesomeIcon icon={faChevronDown} size="sm" className="text-gray-500 mr-2" />
+                  </TableCell>
+                </CollapsibleTrigger>
+              </TableRow>
               {/* Si tiene data que desplegar */}
               {recomendacion.lotes?.length &&
               <CollapsibleContent asChild>
