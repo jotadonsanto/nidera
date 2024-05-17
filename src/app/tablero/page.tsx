@@ -57,7 +57,6 @@ export default function Recomendaciones() {
   },[])
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    // resolver: zodResolver(FormSchema),
     defaultValues: {
       terminos: "",
       cliente: "",

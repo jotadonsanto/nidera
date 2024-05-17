@@ -4,6 +4,7 @@ import { Loading } from '@/components/ui/loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareAlt  } from '@fortawesome/free-solid-svg-icons';
 
+import CompartirRecomendacion from "@/app/recomendacion/[recomendacionId]/compartirRecomendacion";
 import type { Lote } from '@/app/recomendacion/recomendacion';
 
 export default function RecomendacionTopNav(props: any) {
@@ -31,11 +32,8 @@ export default function RecomendacionTopNav(props: any) {
           </TabsList>
         </Tabs>
       </div>
-      <div className="flex items-center justify-end ">
-        <Button variant={'secondary'} className="flex justify-between" >
-          <FontAwesomeIcon icon={faShareAlt} className="text-primary mr-2" />
-          Compartir Recomendacion
-        </Button>
+      <div className="flex items-center justify-end">
+        <CompartirRecomendacion />
       </div>
       </>
       }

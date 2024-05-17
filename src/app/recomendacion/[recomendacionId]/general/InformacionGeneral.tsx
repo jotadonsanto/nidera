@@ -1,26 +1,26 @@
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCakeCandles, faCalendar, faSunPlantWilt, faSeedling, faLemon, faMedal, faEdit, faTruck, faWater, faTruckField  } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faSunPlantWilt, faSeedling, faLemon, faMedal, faTruck, faWater, faTruckField  } from '@fortawesome/free-solid-svg-icons';
+import EditarInformacionGeneral from "@/app/recomendacion/[recomendacionId]/general/editarInformacionGeneral";
 
 const sample = {
   manejo: {
     fecha: '20/11/2034',
-    indice: 'xxx',
-    hibrido: 'xxxx',
-    bolsas_totales: 'xxxx',
-    coeficiente: 'xxxx',
+    indice: 9000,
+    hibrido: 'BNASUULASJJ82 JAS23',
+    bolsas_totales: 20,
+    coeficiente: 93,
   },
   precio: {
-    precio_grano: 'xxxxxxxx',
-    precio_bolsa: 'xxxxxxxx',
-    gastos_comercializacion: 'xxxxxxxx',
+    precio_grano: 190,
+    precio_bolsa: 230,
+    gastos_comercializacion: 20,
   },
   ambiente: {
-    profundidad: 'xxxxxxxx',
-    textura: 'xxxxxxxx',
-    ano: 'xxxxxxxx',
-    agua_util: 'xxxxxxxx',
+    profundidad: 100,
+    textura: 'Franco',
+    ano: 2023,
+    agua_util: '75',
   },
 };
 
@@ -28,10 +28,12 @@ const items = {
   fecha: {
     label: 'Fecha de siembra óptima',
     icon: faCalendar,
+    type: 'datepicker',
   },
   indice: {
     label: 'Indice Ambiental (kg/ha)',
     icon: faSunPlantWilt,
+    type: 'number',
   },
   hibrido: {
     label: 'Híbrido',
@@ -40,38 +42,47 @@ const items = {
   bolsas_totales: {
     label: 'Bolsas Totales - Variable (80.0000 sem/bolsa)',
     icon: faSeedling,
+    type: 'number',
   },
   coeficiente: {
     label: 'Coeficiente de logro (%)',
     icon: faMedal,
+    type: 'number',
   },
   precio_grano: {
     label: 'Precio grano (USD/Tn)',
     icon: faLemon,
+    type: 'number',
   },
   precio_bolsa: {
     label: 'Precio bolsa (USD/Bolsa)',
     icon: faSeedling,
+    type: 'number',
   },
   gastos_comercializacion: {
     label: 'Gastos de comercialización y flete (%)',
     icon: faTruck,
+    type: 'number',
   },
   profundidad: {
     label: 'Profundidad (cm)',
     icon: faWater,
+    type: 'number',
   },
   textura: {
     label: 'Textura de suelo',
     icon: faTruckField,
+    type: 'select',
   },
   ano: {
     label: 'Año',
     icon: faCalendar,
+    type: 'number',
   },
   agua_util: {
     label: 'Agua útil a la siembra (%)',
     icon: faWater,
+    type: 'select',
   },
   ambiente: {
     label: 'Ambiente',
@@ -107,10 +118,7 @@ export default function InformacionGeneral(props: any) {
       </div>
       <hr />
       <div className="p-8">
-        <Button className="flex gap-2">
-          <FontAwesomeIcon icon={faEdit} />
-          Editar información
-        </Button>
+        <EditarInformacionGeneral fields={sample} items={items} />
       </div>
     </div>
   )
