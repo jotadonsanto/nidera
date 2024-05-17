@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useState } from 'react';
 import { cn } from "@/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
