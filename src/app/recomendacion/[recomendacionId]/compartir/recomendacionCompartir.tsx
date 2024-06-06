@@ -20,7 +20,7 @@ export default function RecomendacionCompartir(props: any) {
   }
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={() => setForm({contacto: '', mensaje: ''})}>
       <DialogTrigger asChild>
         <Button variant={'secondary'} className="flex justify-between" >
           <FontAwesomeIcon icon={faShareAlt} className="text-primary mr-2" />
