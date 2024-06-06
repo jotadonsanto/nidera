@@ -52,7 +52,7 @@ export default function ElegirContacto(props: any) {
       </div>
       <div className="flex flex-1 flex-col gap-2">
         <Label>Descripción (Opcional)</Label>
-        <Textarea placeholder="Breve descripción" onInput={(event: { target: HTMLTextAreaElement; }) => props.setForm({contacto: props.form.contacto, mensaje: (event.target as HTMLTextAreaElement).value})} />
+        <Textarea placeholder="Breve descripción" onInput={(event) => props.setForm({contacto: props.form.contacto, mensaje: (event.target as HTMLTextAreaElement).value})} />
       </div>
     </div>
     <DialogFooter>
