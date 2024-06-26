@@ -2,6 +2,7 @@ import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs";
 import { Loading } from '@/components/ui/loading';
 
 import RecomendacionCompartir from "@/app/recomendacion/[recomendacionId]/compartir/recomendacionCompartir";
+import RecomendacionDescargar from "@/app/recomendacion/[recomendacionId]/descargar/recomendacionDescargar";
 import type { Lote } from '@/app/recomendacion/recomendacion';
 
 export default function RecomendacionTopNav(props: any) {
@@ -31,6 +32,7 @@ export default function RecomendacionTopNav(props: any) {
       </div>
       <div className="flex items-center justify-end">
         <RecomendacionCompartir />
+        <RecomendacionDescargar />
       </div>
       </>
       }
